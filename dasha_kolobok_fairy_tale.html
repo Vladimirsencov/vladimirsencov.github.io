@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сказка о Даше и Колобке, который боялся спать</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comfortaa', cursive;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 25%, #ffd3e4 50%, #c1dfc4 75%, #a8edea 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .forest-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .forest-tree {
+            position: absolute;
+            font-size: 40px;
+            animation: tree-sway 8s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .forest-tree:nth-child(1) { bottom: 10%; left: 5%; animation-delay: 0s; }
+        .forest-tree:nth-child(2) { bottom: 15%; right: 10%; animation-delay: 2s; }
+        .forest-tree:nth-child(3) { bottom: 5%; left: 45%; animation-delay: 4s; }
+        .forest-tree:nth-child(4) { bottom: 20%; right: 30%; animation-delay: 6s; }
+        .forest-tree:nth-child(5) { bottom: 8%; left: 70%; animation-delay: 1s; }
+
+        @keyframes tree-sway {
+            0%, 100% { transform: rotate(-2deg) scale(1); }
+            50% { transform: rotate(2deg) scale(1.05); }
+        }
+
+        .rolling-kolobok {
+            position: absolute;
+            top: 25%;
+            right: 10%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #ffd700, #ffa500);
+            border-radius: 50%;
+            animation: kolobok-roll 6s ease-in-out infinite;
+            box-shadow: 0 5px 15px rgba(255, 165, 0, 0.5);
+        }
+
+        .rolling-kolobok::before {
+            content: '😊';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+        }
+
+        @keyframes kolobok-roll {
+            0%, 100% { 
+                transform: rotate(0deg) translateX(0px);
+            }
+            25% { 
+                transform: rotate(90deg) translateX(20px);
+            }
+            50% { 
+                transform: rotate(180deg) translateX(0px);
+            }
+            75% { 
+                transform: rotate(270deg) translateX(-20px);
+            }
+        }
+
+        .forest-path {
+            position: absolute;
+            bottom: 5%;
+            left: 5%;
+            right: 5%;
+            height: 60px;
+            background: linear-gradient(to right, rgba(139, 69, 19, 0.3), rgba(160, 82, 45, 0.3));
+            border-radius: 50px;
+            animation: path-glow 4s ease-in-out infinite;
+        }
+
+        @keyframes path-glow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(15px);
+            position: relative;
+            border: 3px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #a8edea 0%, #fed6e3 25%, #ffd3e4 50%, #c1dfc4 75%, #a8edea 100%);
+            border-radius: 28px;
+            z-index: -1;
+            animation: fairy-border 7s linear infinite;
+        }
+
+        @keyframes fairy-border {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+
+        h1 {
+            text-align: center;
+            color: #8b4513;
+            font-size: 2.6rem;
+            margin-bottom: 35px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1::before {
+            content: '👧';
+            position: absolute;
+            top: -10px;
+            left: -80px;
+            font-size: 3.5rem;
+            animation: dasha-bounce 3s ease-in-out infinite;
+        }
+
+        h1::after {
+            content: '🍞';
+            position: absolute;
+            top: -10px;
+            right: -80px;
+            font-size: 3rem;
+            animation: bread-spin 4s ease-in-out infinite;
+        }
+
+        @keyframes dasha-bounce {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.1); }
+        }
+
+        @keyframes bread-spin {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+        }
+
+        .story {
+            line-height: 1.9;
+            font-size: 1.15rem;
+            color: #5d4037;
+        }
+
+        .story p {
+            margin-bottom: 25px;
+            padding: 22px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story p:nth-child(odd) {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-left: 6px solid #ffa726;
+        }
+
+        .story p:nth-child(even) {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-left: 6px solid #66bb6a;
+        }
+
+        .story p:hover {
+            transform: translateX(8px) translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .story p::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: left 0.6s;
+        }
+
+        .story p:hover::before {
+            left: 100%;
+        }
+
+        .dialogue {
+            font-style: italic;
+            font-weight: 600;
+            position: relative;
+            padding-left: 40px;
+            color: #8b4513;
+        }
+
+        .dasha-dialogue::before {
+            content: '👧';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.8rem;
+        }
+
+        .kolobok-dialogue::before {
+            content: '🍞';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.8rem;
+        }
+
+        .grandma-dialogue::before {
+            content: '👵';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.5rem;
+        }
+
+        .fox-dialogue::before {
+            content: '🦊';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.5rem;
+        }
+
+        .dream-window {
+            background: linear-gradient(135deg, #1a237e 0%, #3949ab 50%, #7986cb 100%);
+            color: white;
+            font-family: 'Comfortaa', cursive;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            position: relative;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .dream-window::before {
+            content: '🌟';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2.5rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            animation: star-pulse 2s ease-in-out infinite;
+        }
+
+        .dream-window::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent);
+            animation: moon-phase 4s ease-in-out infinite;
+        }
+
+        @keyframes star-pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+        }
+
+        @keyframes moon-phase {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.3); opacity: 1; }
+        }
+
+        .ending {
+            background: linear-gradient(135deg, #ffd700 0%, #ffa500 50%, #ff8c00 100%);
+            color: white;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 35px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .ending::before {
+            content: '🍞💤';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+
+        .moon-window {
+            position: absolute;
+            top: 8%;
+            left: 8%;
+            font-size: 60px;
+            animation: moon-float 5s ease-in-out infinite;
+        }
+
+        @keyframes moon-float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-15px) scale(1.1); }
+        }
+
+        .sleeping-house {
+            position: absolute;
+            bottom: 25%;
+            right: 15%;
+            font-size: 70px;
+            animation: house-sleep 6s ease-in-out infinite;
+        }
+
+        @keyframes house-sleep {
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.02); filter: brightness(0.8); }
+        }
+
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-family: 'Comfortaa', cursive;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+@media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .story {
+                font-size: 1rem;
+            }
+
+            h1::before,
+            h1::after {
+                display: none;
+            }
+
+            .rolling-kolobok,
+            .sleeping-house {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="forest-elements">
+        <div class="forest-tree">🌲</div>
+        <div class="forest-tree">🌳</div>
+        <div class="forest-tree">🌲</div>
+        <div class="forest-tree">🌳</div>
+        <div class="forest-tree">🌲</div>
+    </div>
+
+    <div class="forest-path"></div>
+    <div class="rolling-kolobok"></div>
+    <div class="moon-window">🌙</div>
+    <div class="sleeping-house">🏠</div>
+
+        <a href="index.html" class="back-button">🏠 На главную</a>
+    
+<div class="container">
+        <h1>Сказка о Даше и Колобке, который боялся спать</h1>
+        
+        <div class="story">
+            <p>Жила-была девочка Даша, которая очень любила сказки. Особенно ей нравилась сказка про Колобка. И вот однажды вечером, когда Даша никак не хотела ложиться спать, случилось чудо - в её комнате появился настоящий Колобок!</p>
+            
+            <p class="dialogue kolobok-dialogue">"Привет, Даша! Я прикатился к тебе из сказки, потому что услышал, что ты не хочешь спать. Знаешь что? Я тоже очень боюсь засыпать!"</p>
+            
+            <p class="dialogue dasha-dialogue">"Колобок! Ты настоящий! Но почему ты боишься спать?" - удивилась Даша.</p>
+            
+            <p class="dialogue kolobok-dialogue">"Я боюсь, что пока я сплю, меня съест хитрая лиса! Или серый волк! Или даже медведь! Я всегда качусь, качусь, качусь... и никогда не останавливаюсь!"</p>
+            
+            <p>Даша погладила круглого друга и сказала:</p>
+            
+            <p class="dialogue dasha-dialogue">"Бедный Колобок! Но ты же теперь у меня дома, здесь нет ни лисы, ни волка, ни медведя. Здесь безопасно!"</p>
+            
+            <p class="dialogue kolobok-dialogue">"Правда? Но я всё равно боюсь... А вдруг во сне я забуду свою песенку? 'Я Колобок, Колобок, по амбару метён, по сусекам скребён...' Что если я проснусь и не вспомню слова?"</p>
+            
+            <p>Даша задумалась. Она вспомнила, как её бабушка рассказывала ей о волшебстве снов.</p>
+            
+            <p class="dialogue dasha-dialogue">"Знаешь что, Колобок? Моя бабушка говорила, что во сне происходят самые удивительные вещи! Давай я расскажу тебе секрет..."</p>
+            
+            <p>Даша подошла к окну и показала на звёздное небо:</p>
+            
+            <p class="dialogue dasha-dialogue">"Видишь луну? Она охраняет сны всех детей и даже сказочных героев! Когда мы спим, луна посылает нам волшебные сны, где мы можем быть кем угодно и делать что угодно!"</p>
+            
+            <p class="dialogue kolobok-dialogue">"Даже быть не круглым?" - с надеждой спросил Колобок.</p>
+            
+            <p class="dialogue dasha-dialogue">"Конечно! Во сне ты можешь быть квадратным Колобком, или треугольным, или даже Колобком с ножками, который не катится, а бегает!"</p>
+            
+            <p>Колобок засмеялся:</p>
+            
+            <p class="dialogue kolobok-dialogue">"Ха-ха! Колобок с ножками! Это было бы забавно! А что ещё бывает во снах?"</p>
+            
+            <div class="dream-window">
+                "Во снах," - начала рассказывать Даша, - "ты можешь летать выше облаков, плавать быстрее рыб, дружить со всеми зверями из леса! Лиса может стать твоей подружкой, волк - защитником, а медведь - учителем танцев! И твоя песенка... во сне она может стать ещё красивее! Ты можешь петь дуэтом с соловьём или даже с самой луной!"
+            </div>
+            
+            <p class="dialogue kolobok-dialogue">"Вот это да! А почему же я раньше не знал об этом?"</p>
+            
+            <p class="dialogue dasha-dialogue">"Потому что ты всё время катился и никогда не останавливался, чтобы отдохнуть! Но знаешь что самое главное? Когда мы спим, наше тело отдыхает, а разум становится сильнее. Ты будешь катиться ещё быстрее и петь ещё громче!"</p>
+            
+            <p>В этот момент в комнату заглянула Дашина бабушка:</p>
+            
+            <p class="dialogue grandma-dialogue">"Ой, у нас гость! Здравствуй, Колобок! Не хотите ли вы с Дашенькой тёплого молока с мёдом перед сном?"</p>
+            
+            <p>Бабушка принесла два стакана молока и села рядом:</p>
+            
+            <p class="dialogue grandma-dialogue">"Знаете, дети, когда я пекла Колобка много лет назад, я добавила в тесто щепотку волшебной сонной муки. Эта мука даёт самые сладкие и безопасные сны!"</p>
+            
+            <p class="dialogue kolobok-dialogue">"Так ты моя бабушка-создательница? Ого! А я и не знал про волшебную муку!"</p>
+            
+            <p class="dialogue grandma-dialogue">"Да, милый. И я всегда защищаю твои сны. Когда ты спишь, вокруг тебя появляется невидимый щит из бабушкиной любви. Никакая лиса не сможет через него пройти!"</p>
+            
+            <p>Колобок обрадовался и даже подпрыгнул от счастья. Даша зевнула:</p>
+            
+            <p class="dialogue dasha-dialogue">"Колобок, давай попробуем заснуть вместе? Я буду рядом, и мы сможем увидеть одинаковые сны!"</p>
+            
+            <p class="dialogue kolobok-dialogue">"Давай! Но как нам увидеть одинаковые сны?"</p>
+            
+            <p class="dialogue dasha-dialogue">"Нужно просто подумать об одном и том же перед сном. Давай представим большой сказочный лес, где все звери - наши друзья!"</p>
+            
+            <p>Даша легла в кроватку, а Колобок устроился на мягкой подушке рядом. Они закрыли глаза и...</p>
+            
+            <div class="dream-window">
+                ...оказались в чудесном лесу, где деревья были из карамели, а трава - из сахарной ваты! Лиса встретила их с корзинкой ягод: "Привет, друзья! Хотите полакомиться?" Волк катал всех на своей спине, а медведь учил танцевать вальс. Колобок обнаружил, что у него выросли маленькие ножки, и он может не только катиться, но и прыгать! А его песенка звучала как целый оркестр!
+            </div>
+            
+            <p>Утром Даша и Колобок проснулись счастливые и отдохнувшие.</p>
+            
+            <p class="dialogue kolobok-dialogue">"Даша! Это был самый лучший сон в моей жизни! Я больше никогда не буду бояться спать!"</p>
+            
+            <p class="dialogue dasha-dialogue">"И я тоже! Теперь я знаю, что сон - это путешествие в волшебную страну!"</p>
+            
+            <p>С тех пор Даша и Колобок каждый вечер с радостью ложились спать, придумывая новые приключения для своих снов. А бабушка всегда желала им спокойной ночи и включала маленький ночник в форме луны.</p>
+            
+            <div class="ending">
+                Так Даша и Колобок поняли, что сон - это не страшно, а очень даже весело! Ведь во сне сбываются самые невероятные мечты, а утром ты просыпаешься сильным, бодрым и готовым к новым приключениям! 👧🍞💤✨
+            </div>
+        </div>
+    </div>
+</body>
+</html>

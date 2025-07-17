@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сказка о коте Мурзике</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comfortaa', cursive;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .paw-print {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 192, 203, 0.6);
+            animation: float-paw 6s ease-in-out infinite;
+        }
+
+        .paw-print:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .paw-print:nth-child(2) { top: 60%; left: 85%; animation-delay: 1s; }
+        .paw-print:nth-child(3) { top: 40%; left: 70%; animation-delay: 2s; }
+        .paw-print:nth-child(4) { top: 80%; left: 20%; animation-delay: 3s; }
+        .paw-print:nth-child(5) { top: 10%; left: 60%; animation-delay: 4s; }
+
+        @keyframes float-paw {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.4; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
+        }
+
+        .yarn-ball {
+            position: absolute;
+            top: 15%;
+            right: 10%;
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #ff6b6b, #ee5a52);
+            border-radius: 50%;
+            animation: bounce-yarn 3s ease-in-out infinite;
+        }
+
+        .yarn-ball::after {
+            content: '🧶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+        }
+
+        @keyframes bounce-yarn {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(180deg); }
+        }
+
+        .fish {
+            position: absolute;
+            bottom: 20%;
+            left: 8%;
+            font-size: 40px;
+            animation: swim 4s ease-in-out infinite;
+        }
+
+        @keyframes swim {
+            0%, 100% { transform: translateX(0px) scaleX(1); }
+            50% { transform: translateX(30px) scaleX(-1); }
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            border: 3px solid rgba(255, 182, 193, 0.3);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 25%, #a8edea 50%, #fed6e3 75%, #ff9a9e 100%);
+            border-radius: 28px;
+            z-index: -1;
+            animation: rainbow-border 5s linear infinite;
+        }
+
+        @keyframes rainbow-border {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        h1 {
+            text-align: center;
+            color: #8b4513;
+            font-size: 2.8rem;
+            margin-bottom: 35px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1::before {
+            content: '🐱';
+            position: absolute;
+            top: -10px;
+            left: -60px;
+            font-size: 3rem;
+            animation: cat-wiggle 2s ease-in-out infinite;
+        }
+
+        h1::after {
+            content: '🏠';
+            position: absolute;
+            top: -10px;
+            right: -60px;
+            font-size: 2.5rem;
+            animation: house-sway 3s ease-in-out infinite;
+        }
+
+        @keyframes cat-wiggle {
+            0%, 100% { transform: rotate(-5deg) scale(1); }
+            50% { transform: rotate(5deg) scale(1.1); }
+        }
+
+        @keyframes house-sway {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        .story {
+            line-height: 1.9;
+            font-size: 1.15rem;
+            color: #5d4037;
+        }
+
+        .story p {
+            margin-bottom: 25px;
+            padding: 22px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story p:nth-child(odd) {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-left: 6px solid #ff6b6b;
+            transform: translateX(0);
+        }
+
+        .story p:nth-child(even) {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-left: 6px solid #4ecdc4;
+            transform: translateX(0);
+        }
+
+        .story p:hover {
+            transform: translateX(10px) translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .story p::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="8" fill="%23ff6b6b"/><ellipse cx="35" cy="55" rx="15" ry="20" fill="%23ff6b6b"/><ellipse cx="65" cy="55" rx="15" ry="20" fill="%23ff6b6b"/><ellipse cx="50" cy="75" rx="8" ry="12" fill="%23ff6b6b"/><circle cx="45" cy="30" r="2" fill="white"/><circle cx="55" cy="30" r="2" fill="white"/></svg>') no-repeat center;
+            background-size: contain;
+            opacity: 0.3;
+        }
+
+        .dialogue {
+            font-style: italic;
+            font-weight: 600;
+            position: relative;
+            padding-left: 40px;
+            color: #8b4513;
+        }
+
+        .cat-dialogue::before {
+            content: '🐱';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.8rem;
+        }
+
+        .mouse-dialogue::before {
+            content: '🐭';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.5rem;
+        }
+
+        .owner-dialogue::before {
+            content: '👩';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.5rem;
+        }
+
+        .ending {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #8b4513;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 35px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border: 3px solid #ffb6c1;
+            position: relative;
+        }
+
+        .ending::before {
+            content: '🐾';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+
+        .cat-house {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 60px;
+            animation: house-glow 4s ease-in-out infinite;
+        }
+
+        @keyframes house-glow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 182, 193, 0.5)); }
+            50% { filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.8)); }
+        }
+
+        .milk-bowl {
+            position: absolute;
+            top: 25%;
+            left: 5%;
+            font-size: 35px;
+            animation: milk-splash 3s ease-in-out infinite;
+        }
+
+        @keyframes milk-splash {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-family: 'Comfortaa', cursive;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .story {
+                font-size: 1rem;
+            }
+
+            h1::before,
+            h1::after {
+                display: none;
+            }
+
+            .yarn-ball,
+            .cat-house {
+                display: none;
+            }
+
+            .back-button {
+                top: 10px;
+                left: 10px;
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="paw-print">🐾</div>
+        <div class="paw-print">🐾</div>
+        <div class="paw-print">🐾</div>
+        <div class="paw-print">🐾</div>
+        <div class="paw-print">🐾</div>
+    </div>
+
+    <div class="yarn-ball"></div>
+    <div class="fish">🐟</div>
+    <div class="cat-house">🏠</div>
+    <div class="milk-bowl">🥛</div>
+
+    <a href="index.html" class="back-button">🏠 На главную</a>
+    
+    <div class="container">
+        <h1>Сказка о коте Мурзике и волшебной рыбке</h1>
+        
+        <div class="story">
+            <p>Жил-был в уютном доме рыжий кот по имени Мурзик. Он был очень ленивый и целыми днями спал на мягкой подушке у окна. Больше всего на свете Мурзик любил сметану и не любил ловить мышей.</p>
+            
+            <p class="dialogue cat-dialogue">"Зачем мне бегать за мышами, - думал Мурзик, - когда хозяйка и так меня хорошо кормит?"</p>
+            
+            <p>Но однажды случилось несчастье! Хозяйка Мурзика заболела и не могла встать с постели. В доме закончилась еда, а кот не умел ничего делать, кроме как спать и есть.</p>
+            
+            <p>В доме появились наглые мыши, которые стащили последние крошки хлеба. Одна особенно храбрая мышка по имени Пип даже поселилась в кошачьей миске!</p>
+            
+            <p class="dialogue mouse-dialogue">"Ха-ха, толстый лентяй! - смеялась мышка Пип. - Ты даже не можешь нас поймать!"</p>
+            
+            <p>Мурзик очень расстроился. Он понял, что должен помочь своей хозяйке, но не знал как. Тогда кот решил пойти к старому пруду за домом, где, по слухам, жила волшебная золотая рыбка.</p>
+            
+            <p>У пруда Мурзик жалобно мяукал, пока из воды не показалась красивая золотая рыбка.</p>
+            
+            <p class="dialogue cat-dialogue">"Волшебная рыбка, - попросил Мурзик, - помоги мне! Моя хозяйка болеет, в доме нет еды, а мыши смеются надо мной. Я не знаю, что делать!"</p>
+            
+            <p>Золотая рыбка внимательно выслушала кота и сказала:</p>
+            
+            <p class="dialogue">"Я помогу тебе, Мурзик, но сначала ты должен стать настоящим котом. Иди домой и поймай всех мышей. Только тогда ты получишь мою помощь."</p>
+            
+            <p>Мурзик вернулся домой полный решимости. Он начал тренироваться: прыгать, бегать, подкрадываться тихо-тихо. Это было очень трудно для ленивого кота!</p>
+            
+            <p>Через неделю упорных тренировок Мурзик поймал всех мышей в доме. Даже храбрая Пип сдалась и попросила пощады.</p>
+            
+            <p class="dialogue mouse-dialogue">"Прости нас, Мурзик! Мы больше не будем воровать еду. Ты стал настоящим котом-охотником!"</p>
+            
+            <p>Когда Мурзик вернулся к пруду, золотая рыбка улыбнулась:</p>
+            
+            <p class="dialogue">"Молодец, Мурзик! Ты научился быть ответственным и заботиться о тех, кого любишь. За это я исполню твое желание."</p>
+            
+            <p>Рыбка взмахнула хвостом, и случилось чудо! Хозяйка Мурзика выздоровела, в доме появилась вкусная еда, а кот получил самую красивую миску с надписью "Лучший кот в мире".</p>
+            
+            <p>С тех пор Мурзик каждый день немного тренировался, чтобы оставаться сильным и ловким. А мыши Пип стала его помощницей - она предупреждала о незваных гостях в доме.</p>
+            
+            <p class="dialogue owner-dialogue">"Какой же ты у меня умный и заботливый, Мурзик!" - говорила хозяйка, гладя своего любимца.</p>
+            
+            <div class="ending">
+                И с тех пор Мурзик понял, что быть ленивым иногда приятно, но помогать тем, кого любишь, гораздо важнее. А золотая рыбка до сих пор живет в пруду и помогает тем, кто готов стать лучше! 🐱💕🏠
+            </div>
+        </div>
+    </div>
+</body>
+</html>

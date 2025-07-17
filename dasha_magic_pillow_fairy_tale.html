@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сказка о Даше и волшебной подушке</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comfortaa', cursive;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 30%, #a8edea 60%, #fed6e3 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .dream-cloud {
+            position: absolute;
+            font-size: 30px;
+            animation: float-cloud 8s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .dream-cloud:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .dream-cloud:nth-child(2) { top: 60%; left: 85%; animation-delay: 2s; }
+        .dream-cloud:nth-child(3) { top: 40%; left: 70%; animation-delay: 4s; }
+        .dream-cloud:nth-child(4) { top: 80%; left: 20%; animation-delay: 6s; }
+        .dream-cloud:nth-child(5) { top: 15%; left: 60%; animation-delay: 1s; }
+
+        @keyframes float-cloud {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.5; }
+            50% { transform: translateY(-30px) rotate(5deg); opacity: 0.9; }
+        }
+
+        .magic-pillow {
+            position: absolute;
+            top: 25%;
+            right: 8%;
+            font-size: 60px;
+            animation: pillow-glow 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 182, 193, 0.8));
+        }
+
+        @keyframes pillow-glow {
+            0%, 100% { transform: scale(1) rotate(-5deg); filter: drop-shadow(0 0 10px rgba(255, 182, 193, 0.5)); }
+            50% { transform: scale(1.1) rotate(5deg); filter: drop-shadow(0 0 20px rgba(255, 182, 193, 0.9)); }
+        }
+
+        .sleepy-stars {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            font-size: 45px;
+            animation: stars-twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes stars-twinkle {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(15px);
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 25%, #a8edea 50%, #fed6e3 75%, #ff9a9e 100%);
+            border-radius: 28px;
+            z-index: -1;
+            animation: dream-border 6s linear infinite;
+        }
+
+        @keyframes dream-border {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        h1 {
+            text-align: center;
+            color: #8b4513;
+            font-size: 2.6rem;
+            margin-bottom: 35px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1::before {
+            content: '👧';
+            position: absolute;
+            top: -10px;
+            left: -70px;
+            font-size: 3rem;
+            animation: girl-sleep 4s ease-in-out infinite;
+        }
+
+        h1::after {
+            content: '🛏️';
+            position: absolute;
+            top: -10px;
+            right: -70px;
+            font-size: 2.5rem;
+            animation: bed-bounce 3s ease-in-out infinite;
+        }
+
+        @keyframes girl-sleep {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-5deg) scale(1.05); }
+            75% { transform: rotate(5deg) scale(1.05); }
+        }
+
+        @keyframes bed-bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .story {
+            line-height: 1.9;
+            font-size: 1.15rem;
+            color: #5d4037;
+        }
+
+        .story p {
+            margin-bottom: 25px;
+            padding: 22px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story p:nth-child(odd) {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-left: 6px solid #ff6b6b;
+        }
+
+        .story p:nth-child(even) {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-left: 6px solid #4ecdc4;
+        }
+
+        .story p:hover {
+            transform: translateX(8px) translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .story p::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .story p:hover::before {
+            left: 100%;
+        }
+
+        .dialogue {
+            font-style: italic;
+            font-weight: 600;
+            position: relative;
+            padding-left: 40px;
+            color: #8b4513;
+        }
+
+        .dasha-dialogue::before {
+            content: '👧';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.8rem;
+        }
+
+        .pillow-dialogue::before {
+            content: '🛏️';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.8rem;
+        }
+
+        .mom-dialogue::before {
+            content: '👩‍💼';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.5rem;
+        }
+
+        .dream-sequence {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-family: 'Comfortaa', cursive;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dream-sequence::before {
+            content: '💭';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+
+        .ending {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #a8edea 100%);
+            color: #8b4513;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 35px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border: 3px solid #ffb6c1;
+            position: relative;
+        }
+
+        .ending::before {
+            content: '💤';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+
+        .dream-castle {
+            position: absolute;
+            bottom: 15%;
+            right: 15%;
+            font-size: 50px;
+            animation: castle-magic 5s ease-in-out infinite;
+        }
+
+        @keyframes castle-magic {
+            0%, 100% { transform: scale(1) rotate(0deg); filter: hue-rotate(0deg); }
+            25% { transform: scale(1.05) rotate(2deg); filter: hue-rotate(90deg); }
+            75% { transform: scale(1.05) rotate(-2deg); filter: hue-rotate(270deg); }
+        }
+
+        .rainbow {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            font-size: 40px;
+            animation: rainbow-arch 6s ease-in-out infinite;
+        }
+
+        @keyframes rainbow-arch {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.1); }
+        }
+
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-family: 'Comfortaa', cursive;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+@media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .story {
+                font-size: 1rem;
+            }
+
+            h1::before,
+            h1::after {
+                display: none;
+            }
+
+            .magic-pillow,
+            .dream-castle {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="dream-cloud">☁️</div>
+        <div class="dream-cloud">☁️</div>
+        <div class="dream-cloud">☁️</div>
+        <div class="dream-cloud">☁️</div>
+        <div class="dream-cloud">☁️</div>
+    </div>
+
+    <div class="magic-pillow">🛏️</div>
+    <div class="sleepy-stars">✨💫</div>
+    <div class="dream-castle">🏰</div>
+    <div class="rainbow">🌈</div>
+
+        <a href="index.html" class="back-button">🏠 На главную</a>
+    
+<div class="container">
+        <h1>Сказка о Даше и волшебной подушке снов</h1>
+        
+        <div class="story">
+            <p>Жила-была девочка Даша, которая очень не любила ложиться спать. Каждый вечер она придумывала тысячи причин, чтобы не идти в свою кроватку.</p>
+            
+            <p class="dialogue dasha-dialogue">"Мама, а можно я ещё чуть-чуть поиграю? Я совсем не устала!" - просила Даша каждый вечер.</p>
+            
+            <p>Но однажды случилось удивительное событие! Добрая фея снов решила помочь Даше и подарила ей волшебную подушку. Эта подушка была не простая - она умела разговаривать и показывать самые невероятные сны!</p>
+            
+            <p>Когда Даша легла на новую подушку, та тихонько зашептала:</p>
+            
+            <p class="dialogue pillow-dialogue">"Привет, Даша! Я волшебная подушка снов. Хочешь, я покажу тебе удивительную страну, где живут твои мечты?"</p>
+            
+            <p class="dialogue dasha-dialogue">"Правда? А что это за страна?" - удивилась Даша.</p>
+            
+            <p class="dialogue pillow-dialogue">"Это место, где сбываются все твои желания! Там ты можешь стать принцессой, полететь на единороге или построить замок из облаков. Но попасть туда можно только во сне!"</p>
+            
+            <p>Даше стало очень любопытно. Она закрыла глазки и...</p>
+            
+            <div class="dream-sequence">
+                Вдруг она оказалась в волшебном саду, где росли конфетные деревья! Розовые облака плыли по небу, а радуга переливалась всеми цветами. Даша встретила там говорящих бабочек, которые научили её летать, и мудрую сову, которая рассказала ей секреты звёзд.
+            </div>
+            
+            <p>Проснувшись утром, Даша была в восторге!</p>
+            
+            <p class="dialogue dasha-dialogue">"Мама, это был самый лучший сон в моей жизни! Можно я сегодня опять лягу спать пораньше?"</p>
+            
+            <p>Мама удивилась, но очень обрадовалась такой перемене.</p>
+            
+            <p class="dialogue mom-dialogue">"Конечно, доченька! Я очень рада, что ты поняла, как важен сон!"</p>
+            
+            <p>В следующую ночь волшебная подушка снова позвала Дашу в путешествие:</p>
+            
+            <p class="dialogue pillow-dialogue">"Сегодня мы отправимся в подводное царство к русалочкам! Они научат тебя плавать, как дельфин!"</p>
+            
+            <div class="dream-sequence">
+                И Даша нырнула в тёплое синее море, где познакомилась с добрыми дельфинами и весёлыми морскими коньками. Русалочки показали ей жемчужный дворец и подарили волшебную ракушку, которая пела колыбельные песни.
+            </div>
+            
+            <p>Каждую ночь волшебная подушка дарила Даше новые приключения. Она побывала в космосе среди звёзд, в сказочном лесу с говорящими животными, в стране великанов и в королевстве фей.</p>
+            
+            <p class="dialogue dasha-dialogue">"Знаешь что, волшебная подушка? Теперь я понимаю, почему нужно спать! Сны - это самые лучшие приключения!"</p>
+            
+            <p class="dialogue pillow-dialogue">"Правильно, Даша! А ещё во сне твоё тело отдыхает и растёт, а в голове складываются все знания, которые ты получила за день. Сон делает тебя сильнее и умнее!"</p>
+            
+            <p>С тех пор Даша каждый вечер с нетерпением ждала, когда мама скажет: "Пора спать!" Ведь её ждали новые волшебные приключения в стране снов.</p>
+            
+            <div class="ending">
+                И теперь каждая девочка, которая ложится спать вовремя, может получить свою волшебную подушку снов. Нужно только очень-очень захотеть и крепко-крепко закрыть глазки! 👧💤🌙✨
+            </div>
+        </div>
+    </div>
+</body>
+</html>

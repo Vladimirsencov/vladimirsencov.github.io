@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сказка о принцессе Даше и волшебной стране снов</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comfortaa', cursive;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 25%, #a8edea 50%, #fed6e3 75%, #f093fb 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .magic-sparkle {
+            position: absolute;
+            font-size: 25px;
+            animation: sparkle-float 8s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        .magic-sparkle:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; }
+        .magic-sparkle:nth-child(2) { top: 70%; left: 90%; animation-delay: 1.5s; }
+        .magic-sparkle:nth-child(3) { top: 30%; left: 75%; animation-delay: 3s; }
+        .magic-sparkle:nth-child(4) { top: 85%; left: 15%; animation-delay: 4.5s; }
+        .magic-sparkle:nth-child(5) { top: 50%; left: 5%; animation-delay: 6s; }
+        .magic-sparkle:nth-child(6) { top: 10%; left: 50%; animation-delay: 7.5s; }
+
+        @keyframes sparkle-float {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); opacity: 0.6; }
+            25% { transform: translateY(-15px) rotate(90deg) scale(1.2); opacity: 1; }
+            50% { transform: translateY(-30px) rotate(180deg) scale(0.8); opacity: 0.8; }
+            75% { transform: translateY(-15px) rotate(270deg) scale(1.1); opacity: 1; }
+        }
+
+        .princess-castle {
+            position: absolute;
+            top: 20%;
+            right: 5%;
+            font-size: 80px;
+            animation: castle-shimmer 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 182, 193, 0.8));
+        }
+
+        @keyframes castle-shimmer {
+            0%, 100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 20px rgba(255, 182, 193, 0.5)) hue-rotate(0deg); }
+            33% { transform: scale(1.05) rotate(2deg); filter: drop-shadow(0 0 25px rgba(255, 182, 193, 0.8)) hue-rotate(120deg); }
+            66% { transform: scale(1.02) rotate(-2deg); filter: drop-shadow(0 0 25px rgba(255, 182, 193, 0.8)) hue-rotate(240deg); }
+        }
+
+        .magic-wand {
+            position: absolute;
+            bottom: 25%;
+            left: 8%;
+            font-size: 60px;
+            animation: wand-magic 4s ease-in-out infinite;
+        }
+
+        @keyframes wand-magic {
+            0%, 100% { transform: rotate(-15deg) scale(1); }
+            25% { transform: rotate(15deg) scale(1.1); }
+            75% { transform: rotate(-10deg) scale(1.05); }
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(15px);
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 20%, #a8edea 40%, #fed6e3 60%, #f093fb 80%, #ff9a9e 100%);
+            border-radius: 28px;
+            z-index: -1;
+            animation: princess-border 8s linear infinite;
+        }
+
+        @keyframes princess-border {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+
+        h1 {
+            text-align: center;
+            color: #8b4513;
+            font-size: 2.8rem;
+            margin-bottom: 35px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1::before {
+            content: '👸';
+            position: absolute;
+            top: -10px;
+            left: -80px;
+            font-size: 3.5rem;
+            animation: princess-dance 4s ease-in-out infinite;
+        }
+
+        h1::after {
+            content: '🏰';
+            position: absolute;
+            top: -10px;
+            right: -80px;
+            font-size: 3rem;
+            animation: castle-glow 5s ease-in-out infinite;
+        }
+
+        @keyframes princess-dance {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-5deg) scale(1.05); }
+            75% { transform: rotate(5deg) scale(1.05); }
+        }
+
+        @keyframes castle-glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 182, 193, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 182, 193, 0.9)); }
+        }
+
+        .story {
+            line-height: 1.9;
+            font-size: 1.15rem;
+            color: #5d4037;
+        }
+
+        .story p {
+            margin-bottom: 25px;
+            padding: 22px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story p:nth-child(odd) {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-left: 6px solid #ff6b6b;
+        }
+
+        .story p:nth-child(even) {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-left: 6px solid #4ecdc4;
+        }
+
+        .story p:hover {
+            transform: translateX(8px) translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .story p::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: left 0.6s;
+        }
+
+        .story p:hover::before {
+            left: 100%;
+        }
+
+        .dialogue {
+            font-style: italic;
+            font-weight: 600;
+            position: relative;
+            padding-left: 40px;
+            color: #8b4513;
+        }
+
+        .dasha-dialogue::before {
+            content: '👸';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.8rem;
+        }
+
+        .fairy-dialogue::before {
+            content: '🧚‍♀️';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.8rem;
+        }
+
+        .guardian-dialogue::before {
+            content: '🦋';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.5rem;
+        }
+
+        .mom-dialogue::before {
+            content: '👑';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.5rem;
+        }
+
+        .magic-portal {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            font-family: 'Comfortaa', cursive;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            position: relative;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .magic-portal::before {
+            content: '🌟';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2.5rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            animation: portal-sparkle 3s ease-in-out infinite;
+        }
+
+        .magic-portal::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: portal-rotate 4s linear infinite;
+        }
+
+        @keyframes portal-sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.3) rotate(180deg); }
+        }
+
+        @keyframes portal-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .ending {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 30%, #a8edea 70%, #fed6e3 100%);
+            color: #8b4513;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 35px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border: 3px solid #ffb6c1;
+            position: relative;
+        }
+
+        .ending::before {
+            content: '👸✨';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+
+        .magic-unicorn {
+            position: absolute;
+            bottom: 15%;
+            right: 12%;
+            font-size: 70px;
+            animation: unicorn-fly 7s ease-in-out infinite;
+        }
+
+        @keyframes unicorn-fly {
+            0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); }
+            25% { transform: translateY(-20px) scale(1.05) rotate(5deg); }
+            75% { transform: translateY(-10px) scale(1.02) rotate(-5deg); }
+        }
+
+        .fairy-dust {
+            position: absolute;
+            top: 8%;
+            left: 15%;
+            font-size: 40px;
+            animation: dust-swirl 5s ease-in-out infinite;
+        }
+
+        @keyframes dust-swirl {
+            0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.7; }
+            50% { transform: rotate(360deg) scale(1.2); opacity: 1; }
+        }
+
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-family: 'Comfortaa', cursive;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+@media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .story {
+                font-size: 1rem;
+            }
+
+            h1::before,
+            h1::after {
+                display: none;
+            }
+
+            .princess-castle,
+            .magic-unicorn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="magic-sparkle">✨</div>
+        <div class="magic-sparkle">🌟</div>
+        <div class="magic-sparkle">💫</div>
+        <div class="magic-sparkle">⭐</div>
+        <div class="magic-sparkle">✨</div>
+        <div class="magic-sparkle">🌟</div>
+    </div>
+
+    <div class="princess-castle">🏰</div>
+    <div class="magic-wand">🪄</div>
+    <div class="magic-unicorn">🦄</div>
+    <div class="fairy-dust">🧚‍♀️</div>
+
+        <a href="index.html" class="back-button">🏠 На главную</a>
+    
+<div class="container">
+        <h1>Сказка о принцессе Даше и волшебной стране снов</h1>
+        
+        <div class="story">
+            <p>В далёком королевстве жила принцесса Даша - самая любопытная и непоседливая принцесса во всём царстве. У неё была красивая корона, великолепные платья и замечательные игрушки, но больше всего на свете она мечтала попасть в легендарную Страну Снов.</p>
+            
+            <p class="dialogue dasha-dialogue">"Мама-королева, - говорила принцесса Даша каждый вечер, - я так хочу увидеть Страну Снов! Говорят, там живут единороги, феи танцуют на радугах, а замки сделаны из облаков!"</p>
+            
+            <p>Королева-мама улыбалась и отвечала:</p>
+            
+            <p class="dialogue mom-dialogue">"Дорогая доченька, попасть в Страну Снов можно только одним способом - нужно крепко заснуть. Но ты никак не хочешь ложиться спать!"</p>
+            
+            <p class="dialogue dasha-dialogue">"Но если я засну, то как же я увижу эту волшебную страну?" - недоумевала принцесса.</p>
+            
+            <p>Однажды вечером, когда принцесса Даша в очередной раз отказывалась идти спать, в её комнату влетела крошечная фея с блестящими крылышками.</p>
+            
+            <p class="dialogue fairy-dialogue">"Здравствуй, принцесса Даша! Меня зовут Сонечка, и я - фея снов. Я слышала, что ты мечтаешь попасть в нашу волшебную страну?"</p>
+            
+            <p class="dialogue dasha-dialogue">"О, да! Это моя самая заветная мечта! Но как же я могу увидеть вашу страну, если для этого нужно спать?"</p>
+            
+            <p class="dialogue fairy-dialogue">"А ты знаешь секрет Страны Снов?" - загадочно улыбнулась фея Сонечка. "Там время течёт по-особенному! Одна минута сна равна целому дню приключений в нашей стране!"</p>
+            
+            <p>Принцесса Даша была поражена этим открытием.</p>
+            
+            <p class="dialogue dasha-dialogue">"Правда? Значит, если я засну на всю ночь, то проведу в вашей стране целые месяцы?"</p>
+            
+            <p class="dialogue fairy-dialogue">"Именно так! Но есть одно условие - чтобы попасть к нам, нужно искренне желать сна, а не бороться с ним. Страна Снов открывается только тем, кто готов отпустить день и довериться волшебству ночи."</p>
+            
+            <p>Фея взмахнула волшебной палочкой, и в воздухе появился сверкающий портал:</p>
+            
+            <div class="magic-portal">
+                "Посмотри, принцесса! Вот она - дверь в Страну Снов! Но открыться она может только тогда, когда ты закроешь глазки и позволишь сну унести тебя в наше волшебное королевство."
+            </div>
+            
+            <p>В портале Даша увидела удивительные картины: единороги скакали по радужным мостам, феи водили хороводы среди облаков, а в хрустальных замках звучала прекрасная музыка.</p>
+            
+            <p class="dialogue dasha-dialogue">"Это так красиво! Я обязательно хочу туда попасть! Но что, если я засну и забуду всё, что увижу?"</p>
+            
+            <p>Тут к окну подлетела мудрая бабочка - хранительница снов:</p>
+            
+            <p class="dialogue guardian-dialogue">"Не волнуйся, принцесса! Самые яркие сны остаются с нами навсегда. Они становятся частью нашей души и дарят нам радость даже наяву. А ещё, в Стране Снов ты научишься летать, разговаривать с животными и творить настоящие чудеса!"</p>
+            
+            <p>Принцесса Даша почувствовала, как её глазки становятся тяжёлыми от усталости. Впервые за долгое время она не сопротивлялась сну, а наоборот - с нетерпением ждала его.</p>
+            
+            <p class="dialogue dasha-dialogue">"Фея Сонечка, я готова! Я хочу отправиться в Страну Снов!"</p>
+            
+            <p>Принцесса легла в свою кроватку, закрыла глазки, и...</p>
+            
+            <div class="magic-portal">
+                ...оказалась в самом прекрасном месте, которое можно только представить! Она танцевала с феями на облаках, каталась на единороге по звёздным тропинкам, играла в прятки с драконами из мыльных пузырей и пила чай с говорящими цветами в саду из драгоценных камней.
+            </div>
+            
+            <p>Когда принцесса проснулась утром, она была полна радости и энергии.</p>
+            
+            <p class="dialogue dasha-dialogue">"Мама-королева! Это было самое невероятное приключение в моей жизни! Я побывала в Стране Снов, и это оказалось ещё прекраснее, чем я мечтала!"</p>
+            
+            <p>С тех пор принцесса Даша каждый вечер с радостью ложилась спать, зная, что её ждут новые удивительные приключения в волшебной Стране Снов. А фея Сонечка стала её лучшей подругой и проводником в мире грёз.</p>
+            
+            <div class="ending">
+                И каждая маленькая принцесса, которая не боится закрыть глазки и довериться волшебству сна, может попасть в эту удивительную страну, где сбываются самые заветные мечты! 👸✨🏰🦄
+            </div>
+        </div>
+    </div>
+</body>
+</html>

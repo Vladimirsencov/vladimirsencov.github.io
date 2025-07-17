@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сказка о собачке принцессы Белле и волшебном сне</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'comfortaa': ['Comfortaa', 'cursive'],
+                    },
+                    animation: {
+                        'paw-bounce': 'paw-bounce 7s ease-in-out infinite',
+                        'sparkle': 'sparkle 2s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'bounce-gentle': 'bounce-gentle 3s ease-in-out infinite',
+                        'crown-shine': 'crown-shine 4s ease-in-out infinite',
+                        'heart-beat': 'heart-beat 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'paw-bounce': {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg) scale(1)', opacity: '0.5' },
+                            '25%': { transform: 'translateY(-20px) rotate(15deg) scale(1.1)', opacity: '0.8' },
+                            '50%': { transform: 'translateY(-10px) rotate(-10deg) scale(1.05)', opacity: '0.9' },
+                            '75%': { transform: 'translateY(-15px) rotate(5deg) scale(1.08)', opacity: '0.7' },
+                        },
+                        'sparkle': {
+                            '0%, 100%': { opacity: '0.4', transform: 'scale(0.8)' },
+                            '50%': { opacity: '1', transform: 'scale(1.2)' },
+                        },
+                        'glow': {
+                            '0%': { textShadow: '0 0 5px rgba(255, 255, 255, 0.5)' },
+                            '100%': { textShadow: '0 0 20px rgba(255, 255, 255, 0.8)' },
+                        },
+                        'bounce-gentle': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'crown-shine': {
+                            '0%, 100%': { transform: 'rotate(0deg) scale(1)', opacity: '0.8' },
+                            '50%': { transform: 'rotate(10deg) scale(1.1)', opacity: '1' },
+                        },
+                        'heart-beat': {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.1)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-comfortaa bg-gradient-to-br from-orange-100 via-pink-200 via-red-300 via-orange-200 to-teal-200 min-h-screen p-5 relative overflow-x-hidden">
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10">
+        <div class="absolute text-3xl animate-paw-bounce opacity-70" style="top: 20%; left: 10%; animation-delay: 0s;">🐾</div>
+        <div class="absolute text-3xl animate-paw-bounce opacity-70" style="top: 60%; left: 85%; animation-delay: 1.5s;">🐾</div>
+        <div class="absolute text-3xl animate-paw-bounce opacity-70" style="top: 40%; left: 75%; animation-delay: 3s;">🐾</div>
+        <div class="absolute text-3xl animate-paw-bounce opacity-70" style="top: 80%; left: 20%; animation-delay: 4.5s;">🐾</div>
+        <div class="absolute text-3xl animate-paw-bounce opacity-70" style="top: 15%; left: 60%; animation-delay: 6s;">🐾</div>
+        <div class="absolute text-2xl animate-crown-shine opacity-80" style="top: 10%; left: 80%; animation-delay: 1s;">👑</div>
+        <div class="absolute text-2xl animate-crown-shine opacity-80" style="top: 70%; left: 90%; animation-delay: 3s;">👑</div>
+        <div class="absolute text-xl animate-heart-beat opacity-60" style="top: 30%; left: 5%; animation-delay: 2s;">💖</div>
+        <div class="absolute text-xl animate-heart-beat opacity-60" style="top: 90%; left: 70%; animation-delay: 4s;">💖</div>
+        <div class="absolute text-xl animate-sparkle opacity-50" style="top: 25%; left: 25%; animation-delay: 0.5s;">✨</div>
+        <div class="absolute text-xl animate-sparkle opacity-50" style="top: 75%; left: 75%; animation-delay: 2.5s;">✨</div>
+        <div class="absolute text-xl animate-sparkle opacity-50" style="top: 50%; left: 90%; animation-delay: 4.5s;">✨</div>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 mb-8 border-4 border-gradient-to-r from-pink-400 to-purple-400">
+            <h1 class="text-4xl md:text-5xl font-bold text-center mb-6 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent animate-glow">
+                👑 Сказка о собачке принцессы Белле и волшебном сне 👑
+            </h1>
+            
+            <div class="flex justify-center mb-8">
+                <div class="text-6xl animate-bounce-gentle">🐕</div>
+            </div>
+            
+            <div class="space-y-6 text-lg md:text-xl leading-relaxed text-gray-800">
+                <p class="text-center italic text-pink-700 font-medium">
+                    В далёком королевстве жила принцесса Белла со своей любимой собачкой...
+                </p>
+                
+                <p>
+                    Принцесса Белла была самой доброй и заботливой принцессой во всём королевстве. У неё была маленькая собачка по имени Луна - белоснежная, с голубыми глазами и золотистым ошейником.
+                </p>
+                
+                <p>
+                    Луна была не просто собачкой, а верным другом принцессы. Они вместе гуляли по королевскому саду, играли в прятки в замке и каждый вечер засыпали в одной кровати.
+                </p>
+                
+                <div class="bg-gradient-to-r from-pink-100 to-purple-100 p-6 rounded-2xl border-l-4 border-pink-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">👸</div>
+                        <h3 class="text-xl font-bold text-pink-800">Принцесса Белла</h3>
+                    </div>
+                    <p class="italic text-pink-800">
+                        "Луна, ты самая лучшая собачка в мире! Я так тебя люблю!"
+                    </p>
+                </div>
+                
+                <p>
+                    Однажды вечером, когда принцесса и Луна готовились ко сну, собачка вдруг стала очень беспокойной. Она бегала по комнате, скулила и никак не могла успокоиться.
+                </p>
+                
+                <div class="bg-gradient-to-r from-blue-100 to-cyan-100 p-6 rounded-2xl border-l-4 border-blue-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🐕</div>
+                        <h3 class="text-xl font-bold text-blue-800">Луна</h3>
+                    </div>
+                    <p class="italic text-blue-800">
+                        "Гав-гав! Белла, мне приснился странный сон! Я боюсь засыпать снова!"
+                    </p>
+                </div>
+                
+                <p>
+                    Принцесса Белла обняла свою подружку и спросила:
+                </p>
+                
+                <div class="bg-gradient-to-r from-pink-100 to-purple-100 p-6 rounded-2xl border-l-4 border-pink-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">👸</div>
+                        <h3 class="text-xl font-bold text-pink-800">Принцесса Белла</h3>
+                    </div>
+                    <p class="italic text-pink-800">
+                        "Не бойся, Луна! Расскажи мне, что тебе приснилось. Вместе мы справимся с любым страхом!"
+                    </p>
+                </div>
+                
+                <p>
+                    Луна рассказала, что во сне она оказалась в тёмном лесу, где заблудилась и не могла найти дорогу домой. Принцесса внимательно выслушала и сказала:
+                </p>
+                
+                <div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-6 rounded-2xl border-l-4 border-yellow-500 my-6">
+                    <h3 class="text-xl font-bold text-yellow-800 mb-3">💡 Идея принцессы</h3>
+                    <p class="italic text-yellow-800">
+                        "А что если мы вместе отправимся в твой сон и превратим его в прекрасное приключение?"
+                    </p>
+                </div>
+                
+                <p>
+                    Принцесса взяла свою волшебную палочку (подарок от доброй феи) и произнесла заклинание:
+                </p>
+                
+                <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-2xl border-2 border-purple-400 my-8">
+                    <p class="text-center text-xl font-bold text-purple-800 mb-4">
+                        🌟 Волшебное заклинание 🌟
+                    </p>
+                    <p class="text-center text-purple-700 italic">
+                        "Сны страшные, уходите прочь!<br>
+                        Пусть будут сны светлы как день!<br>
+                        Луне моей помочь хочу,<br>
+                        Волшебством добрым защищу!"
+                    </p>
+                </div>
+                
+                <p>
+                    Комната наполнилась мягким золотистым светом, и принцесса с Луной закрыли глаза. Когда они их открыли, то оказались в волшебном мире снов!
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-4 my-8">
+                    <div class="bg-green-100 p-4 rounded-xl border-2 border-green-300 hover:bg-green-200 transition-colors">
+                        <div class="text-4xl mb-2 text-center">🌸</div>
+                        <h4 class="font-bold text-green-800 text-center">Цветочная поляна</h4>
+                        <p class="text-sm text-green-700 text-center">Где растут самые красивые цветы</p>
+                    </div>
+                    <div class="bg-blue-100 p-4 rounded-xl border-2 border-blue-300 hover:bg-blue-200 transition-colors">
+                        <div class="text-4xl mb-2 text-center">🦋</div>
+                        <h4 class="font-bold text-blue-800 text-center">Долина бабочек</h4>
+                        <p class="text-sm text-blue-700 text-center">Где танцуют разноцветные бабочки</p>
+                    </div>
+                    <div class="bg-yellow-100 p-4 rounded-xl border-2 border-yellow-300 hover:bg-yellow-200 transition-colors">
+                        <div class="text-4xl mb-2 text-center">🌈</div>
+                        <h4 class="font-bold text-yellow-800 text-center">Радужный мостик</h4>
+                        <p class="text-sm text-yellow-700 text-center">Который ведёт к замку грёз</p>
+                    </div>
+                    <div class="bg-purple-100 p-4 rounded-xl border-2 border-purple-300 hover:bg-purple-200 transition-colors">
+                        <div class="text-4xl mb-2 text-center">🏰</div>
+                        <h4 class="font-bold text-purple-800 text-center">Замок грёз</h4>
+                        <p class="text-sm text-purple-700 text-center">Где живут добрые сновидения</p>
+                    </div>
+                </div>
+                
+                <p>
+                    Тёмный лес из кошмара превратился в прекрасный сад, полный света и радости. Луна больше не боялась - рядом была её любимая принцесса!
+                </p>
+                
+                <p>
+                    Они встретили добрую фею снов, которая рассказала им секрет:
+                </p>
+                
+                <div class="bg-gradient-to-r from-indigo-100 to-purple-100 p-6 rounded-2xl border-l-4 border-indigo-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🧚‍♀️</div>
+                        <h3 class="text-xl font-bold text-indigo-800">Фея снов</h3>
+                    </div>
+                    <p class="italic text-indigo-800">
+                        "Дорогие друзья, помните: любой страшный сон можно превратить в прекрасное приключение, если рядом есть тот, кто любит тебя!"
+                    </p>
+                </div>
+                
+                <p>
+                    Фея подарила Луне волшебный ошейник, который будет защищать её от плохих снов, а принцессе - браслет дружбы, который всегда будет напоминать о силе их связи.
+                </p>
+                
+                <p>
+                    Когда они проснулись, Луна чувствовала себя спокойно и счастливо. Страх исчез, а на её ошейнике действительно появилась маленькая звёздочка!
+                </p>
+                
+                <div class="bg-gradient-to-r from-pink-100 to-purple-100 p-6 rounded-2xl border-l-4 border-pink-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🐕</div>
+                        <h3 class="text-xl font-bold text-blue-800">Луна</h3>
+                    </div>
+                    <p class="italic text-blue-800">
+                        "Спасибо, Белла! Теперь я знаю, что мне никогда не будет страшно, потому что ты всегда рядом!"
+                    </p>
+                </div>
+                
+                <p>
+                    С тех пор Луна спала спокойно, а её сны были полны удивительных приключений. Иногда во сне к ней приходила принцесса Белла, и они вместе исследовали волшебные миры.
+                </p>
+                
+                <p>
+                    Принцесса Белла поняла важную истину: настоящая дружба способна победить любой страх и превратить даже самый страшный кошмар в прекрасную сказку.
+                </p>
+                
+                <div class="text-center mt-8 p-6 bg-gradient-to-r from-pink-100 to-purple-100 rounded-2xl border-2 border-pink-300">
+                    <p class="text-xl font-bold text-purple-800 mb-2">✨ Конец сказки ✨</p>
+                    <p class="text-lg text-purple-700">
+                        И каждую ночь в королевстве слышалось тихое, довольное похрапывание - это Луна видела самые прекрасные сны рядом со своей лучшей подругой!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="index.html" class="inline-block bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                🏠 Вернуться к сказкам
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Interactive paw effect on click
+        document.addEventListener('click', function(e) {
+            const paw = document.createElement('div');
+            paw.innerHTML = '🐾';
+            paw.className = 'fixed text-2xl pointer-events-none animate-paw-bounce';
+            paw.style.left = e.clientX + 'px';
+            paw.style.top = e.clientY + 'px';
+            paw.style.zIndex = '9999';
+            document.body.appendChild(paw);
+            
+            setTimeout(() => {
+                paw.remove();
+            }, 7000);
+        });
+
+        // Dream world cards hover effect
+        document.querySelectorAll('.grid > div').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

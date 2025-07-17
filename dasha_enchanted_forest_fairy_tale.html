@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сказка о Даше и волшебном лесе</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'comfortaa': ['Comfortaa', 'cursive'],
+                    },
+                    animation: {
+                        'leaf-fall': 'leaf-fall 10s ease-in-out infinite',
+                        'sparkle': 'sparkle 2s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'bounce-gentle': 'bounce-gentle 3s ease-in-out infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'leaf-fall': {
+                            '0%': { transform: 'translateY(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(50vh) rotate(180deg)' },
+                            '100%': { transform: 'translateY(100vh) rotate(360deg)' },
+                        },
+                        'sparkle': {
+                            '0%, 100%': { opacity: '0.4', transform: 'scale(0.8)' },
+                            '50%': { opacity: '1', transform: 'scale(1.2)' },
+                        },
+                        'glow': {
+                            '0%': { textShadow: '0 0 5px rgba(255, 255, 255, 0.5)' },
+                            '100%': { textShadow: '0 0 20px rgba(255, 255, 255, 0.8)' },
+                        },
+                        'bounce-gentle': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)', opacity: '0.4' },
+                            '50%': { transform: 'translateY(-20px) rotate(15deg)', opacity: '0.8' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-comfortaa bg-gradient-to-br from-green-300 via-yellow-200 via-green-200 via-yellow-300 to-orange-200 min-h-screen p-5 relative overflow-x-hidden">
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10">
+        <div class="absolute text-3xl animate-leaf-fall opacity-70" style="top: -10%; left: 10%; animation-delay: 0s;">🍃</div>
+        <div class="absolute text-3xl animate-leaf-fall opacity-70" style="top: -10%; left: 80%; animation-delay: 2s;">🍃</div>
+        <div class="absolute text-3xl animate-leaf-fall opacity-70" style="top: -10%; left: 30%; animation-delay: 4s;">🍃</div>
+        <div class="absolute text-3xl animate-leaf-fall opacity-70" style="top: -10%; left: 60%; animation-delay: 6s;">🍃</div>
+        <div class="absolute text-3xl animate-leaf-fall opacity-70" style="top: -10%; left: 45%; animation-delay: 8s;">🍃</div>
+        <div class="absolute text-3xl animate-leaf-fall opacity-70" style="top: -10%; left: 90%; animation-delay: 3s;">🍃</div>
+        <div class="absolute text-2xl animate-float opacity-60" style="top: 20%; left: 15%; animation-delay: 1s;">🌸</div>
+        <div class="absolute text-2xl animate-float opacity-60" style="top: 60%; left: 85%; animation-delay: 3s;">🌸</div>
+        <div class="absolute text-2xl animate-float opacity-60" style="top: 80%; left: 20%; animation-delay: 5s;">🌸</div>
+        <div class="absolute text-2xl animate-float opacity-60" style="top: 40%; left: 70%; animation-delay: 2s;">🌸</div>
+        <div class="absolute text-xl animate-sparkle opacity-50" style="top: 25%; left: 25%; animation-delay: 0.5s;">✨</div>
+        <div class="absolute text-xl animate-sparkle opacity-50" style="top: 75%; left: 75%; animation-delay: 2.5s;">✨</div>
+        <div class="absolute text-xl animate-sparkle opacity-50" style="top: 50%; left: 90%; animation-delay: 4.5s;">✨</div>
+        <div class="absolute text-xl animate-sparkle opacity-50" style="top: 10%; left: 50%; animation-delay: 1.5s;">✨</div>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 mb-8 border-4 border-gradient-to-r from-green-400 to-yellow-400">
+            <h1 class="text-4xl md:text-5xl font-bold text-center mb-6 bg-gradient-to-r from-green-600 to-yellow-600 bg-clip-text text-transparent animate-glow">
+                🌳 Сказка о Даше и волшебном лесе 🌳
+            </h1>
+            
+            <div class="flex justify-center mb-8">
+                <div class="text-6xl animate-bounce-gentle">🧚‍♀️</div>
+            </div>
+            
+            <div class="space-y-6 text-lg md:text-xl leading-relaxed text-gray-800">
+                <p class="text-center italic text-green-700 font-medium">
+                    Жила-была девочка по имени Даша, которая очень любила природу...
+                </p>
+                
+                <p>
+                    Каждое утро Даша просыпалась с первыми лучами солнца и бежала в сад, чтобы поздороваться с цветами и деревьями. Она умела слышать их шёпот и понимала язык птиц.
+                </p>
+                
+                <p>
+                    Однажды, гуляя по лесу рядом с домом, Даша заметила необычную тропинку, усыпанную золотыми листьями. Тропинка словно светилась изнутри и манила девочку вглубь леса.
+                </p>
+                
+                <div class="bg-gradient-to-r from-yellow-100 to-green-100 p-6 rounded-2xl border-l-4 border-yellow-500 my-6">
+                    <p class="italic text-green-800">
+                        "Интересно, куда ведёт эта тропинка?" - подумала Даша и решила пойти по ней.
+                    </p>
+                </div>
+                
+                <p>
+                    Чем дальше шла Даша, тем более волшебным становился лес. Деревья росли выше, цветы сияли ярче, а в воздухе звучала прекрасная мелодия.
+                </p>
+                
+                <p>
+                    Вдруг на пути появился говорящий заяц в изумрудном жилете:
+                </p>
+                
+                <div class="bg-gradient-to-r from-green-100 to-blue-100 p-6 rounded-2xl border-l-4 border-green-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🐰</div>
+                        <h3 class="text-xl font-bold text-green-700">Заяц Изумрудик</h3>
+                    </div>
+                    <p class="italic text-green-800">
+                        "Здравствуй, добрая девочка! Ты попала в Зачарованный лес. Но будь осторожна - злой колдун Мраксис хочет украсть всю магию нашего леса!"
+                    </p>
+                </div>
+                
+                <p>
+                    Даша испугалась, но решила помочь лесным жителям. Заяц рассказал ей, что для победы над колдуном нужно собрать три волшебных цветка:
+                </p>
+                
+                <div class="grid md:grid-cols-3 gap-4 my-8">
+                    <div class="bg-pink-100 p-4 rounded-xl text-center border-2 border-pink-300 hover:bg-pink-200 transition-colors cursor-pointer">
+                        <div class="text-4xl mb-2">🌸</div>
+                        <h4 class="font-bold text-pink-800">Цветок Доброты</h4>
+                        <p class="text-sm text-pink-700">Растёт у Доброго Медведя</p>
+                    </div>
+                    <div class="bg-red-100 p-4 rounded-xl text-center border-2 border-red-300 hover:bg-red-200 transition-colors cursor-pointer">
+                        <div class="text-4xl mb-2">🌹</div>
+                        <h4 class="font-bold text-red-800">Цветок Смелости</h4>
+                        <p class="text-sm text-red-700">Охраняет Мудрая Сова</p>
+                    </div>
+                    <div class="bg-blue-100 p-4 rounded-xl text-center border-2 border-blue-300 hover:bg-blue-200 transition-colors cursor-pointer">
+                        <div class="text-4xl mb-2">🌺</div>
+                        <h4 class="font-bold text-blue-800">Цветок Дружбы</h4>
+                        <p class="text-sm text-blue-700">Дарит Весёлая Белочка</p>
+                    </div>
+                </div>
+                
+                <p>
+                    Даша отправилась в путешествие по волшебному лесу. Первым она встретила Доброго Медведя, который плакал у своей берлоги.
+                </p>
+                
+                <div class="bg-gradient-to-r from-brown-100 to-yellow-100 p-6 rounded-2xl border-l-4 border-yellow-600 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🐻</div>
+                        <h3 class="text-xl font-bold text-yellow-800">Добрый Медведь</h3>
+                    </div>
+                    <p class="italic text-yellow-800">
+                        "Ох, маленькая девочка! Злой колдун заколдовал мой мёд, и теперь он горький. Помоги мне, пожалуйста!"
+                    </p>
+                </div>
+                
+                <p>
+                    Даша погладила медведя по голове и сказала добрые слова. Мёд сразу стал сладким! Благодарный медведь подарил ей розовый Цветок Доброты.
+                </p>
+                
+                <p>
+                    Затем Даша пошла к Мудрой Сове, которая сидела на высоком дереве и не могла слететь вниз из-за сломанного крыла.
+                </p>
+                
+                <div class="bg-gradient-to-r from-gray-100 to-purple-100 p-6 rounded-2xl border-l-4 border-purple-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🦉</div>
+                        <h3 class="text-xl font-bold text-purple-800">Мудрая Сова</h3>
+                    </div>
+                    <p class="italic text-purple-800">
+                        "Умная девочка, колдун повредил моё крыло. Если ты поможешь мне, я дам тебе Цветок Смелости."
+                    </p>
+                </div>
+                
+                <p>
+                    Даша не побоялась залезть на высокое дерево и осторожно перевязала крыло совы мягкими листьями. Сова подарила ей красный Цветок Смелости.
+                </p>
+                
+                <p>
+                    Наконец, Даша встретила Весёлую Белочку, которая потеряла все свои орешки.
+                </p>
+                
+                <div class="bg-gradient-to-r from-orange-100 to-red-100 p-6 rounded-2xl border-l-4 border-orange-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🐿️</div>
+                        <h3 class="text-xl font-bold text-orange-800">Весёлая Белочка</h3>
+                    </div>
+                    <p class="italic text-orange-800">
+                        "Даша, злой колдун спрятал все мои орешки! Без них я не смогу пережить зиму. Помоги мне найти их!"
+                    </p>
+                </div>
+                
+                <p>
+                    Даша помогла белочке найти орешки и даже поделилась своими запасами. Белочка была так счастлива, что подарила Даше синий Цветок Дружбы.
+                </p>
+                
+                <p>
+                    Когда у Даши были все три цветка, она отправилась к тёмному замку колдуна Мраксиса. Замок был мрачным и пугающим, но Даша не испугалась.
+                </p>
+                
+                <div class="bg-gradient-to-r from-gray-200 to-black p-6 rounded-2xl border-l-4 border-gray-600 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🧙‍♂️</div>
+                        <h3 class="text-xl font-bold text-gray-800">Колдун Мраксис</h3>
+                    </div>
+                    <p class="italic text-gray-800">
+                        "Маленькая девочка думает, что может победить меня? Ха-ха-ха! Я украду всю магию леса!"
+                    </p>
+                </div>
+                
+                <p>
+                    Но когда Даша подняла три волшебных цветка, они засияли ярким светом. Доброта, Смелость и Дружба оказались сильнее злой магии!
+                </p>
+                
+                <p>
+                    Колдун Мраксис растаял как снег под весенним солнцем, а его тёмный замок превратился в прекрасный цветочный сад.
+                </p>
+                
+                <div class="bg-gradient-to-r from-green-200 to-yellow-200 p-6 rounded-2xl border-2 border-green-400 my-8">
+                    <p class="text-center text-xl font-bold text-green-800">
+                        🌟 Волшебный лес был спасён! 🌟
+                    </p>
+                </div>
+                
+                <p>
+                    Все лесные жители вышли поблагодарить Дашу. Они устроили большой праздник с танцами, песнями и вкусными лесными угощениями.
+                </p>
+                
+                <p>
+                    Заяц Изумрудик подарил Даше волшебный амулет в виде листочка:
+                </p>
+                
+                <div class="bg-gradient-to-r from-green-100 to-blue-100 p-6 rounded-2xl border-l-4 border-green-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🐰</div>
+                        <h3 class="text-xl font-bold text-green-700">Заяц Изумрудик</h3>
+                    </div>
+                    <p class="italic text-green-800">
+                        "Этот амулет поможет тебе всегда находить дорогу в наш волшебный лес. Ты навсегда останешься нашим другом!"
+                    </p>
+                </div>
+                
+                <p>
+                    Даша вернулась домой, но теперь она знала, что в любой момент может вернуться к своим лесным друзьям. А главное - она поняла, что доброта, смелость и дружба - это самая настоящая магия!
+                </p>
+                
+                <div class="text-center mt-8 p-6 bg-gradient-to-r from-pink-100 to-purple-100 rounded-2xl border-2 border-pink-300">
+                    <p class="text-xl font-bold text-purple-800 mb-2">✨ Конец сказки ✨</p>
+                    <p class="text-lg text-purple-700">
+                        И с тех пор Даша каждый день помогала всем, кто нуждался в помощи, ведь она знала - в этом и есть настоящее волшебство!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="index.html" class="inline-block bg-gradient-to-r from-green-500 to-yellow-500 hover:from-green-600 hover:to-yellow-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                🏠 Вернуться к сказкам
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Interactive sparkle effect
+        document.addEventListener('click', function(e) {
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = '✨';
+            sparkle.className = 'fixed text-2xl pointer-events-none animate-sparkle';
+            sparkle.style.left = e.clientX + 'px';
+            sparkle.style.top = e.clientY + 'px';
+            sparkle.style.zIndex = '9999';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        });
+
+        // Flower cards hover effect
+        document.querySelectorAll('.grid > div').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

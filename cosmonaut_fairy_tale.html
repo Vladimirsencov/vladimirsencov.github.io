@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сказка о космонавте и звездочке</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comfortaa', cursive;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .space-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite alternate;
+        }
+
+        .star:nth-child(1) { top: 15%; left: 10%; width: 2px; height: 2px; animation-delay: 0s; }
+        .star:nth-child(2) { top: 25%; left: 85%; width: 3px; height: 3px; animation-delay: 0.7s; }
+        .star:nth-child(3) { top: 8%; left: 65%; width: 2px; height: 2px; animation-delay: 1.2s; }
+        .star:nth-child(4) { top: 45%; left: 15%; width: 4px; height: 4px; animation-delay: 0.3s; }
+        .star:nth-child(5) { top: 75%; left: 90%; width: 2px; height: 2px; animation-delay: 1.8s; }
+        .star:nth-child(6) { top: 35%; left: 45%; width: 3px; height: 3px; animation-delay: 2.1s; }
+        .star:nth-child(7) { top: 85%; left: 25%; width: 2px; height: 2px; animation-delay: 0.9s; }
+        .star:nth-child(8) { top: 12%; left: 35%; width: 3px; height: 3px; animation-delay: 1.5s; }
+        .star:nth-child(9) { top: 55%; left: 75%; width: 2px; height: 2px; animation-delay: 2.4s; }
+        .star:nth-child(10) { top: 65%; left: 55%; width: 4px; height: 4px; animation-delay: 0.6s; }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .rocket {
+            position: absolute;
+            top: 30%;
+            right: 10%;
+            width: 40px;
+            height: 60px;
+            animation: float-rocket 4s ease-in-out infinite;
+        }
+
+        .rocket::before {
+            content: '🚀';
+            font-size: 40px;
+            display: block;
+            transform: rotate(45deg);
+        }
+
+        @keyframes float-rocket {
+            0%, 100% { transform: translateY(0px) rotate(10deg); }
+            50% { transform: translateY(-20px) rotate(-5deg); }
+        }
+
+        .planets {
+            position: absolute;
+            top: 20%;
+            left: 5%;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, #ff6b6b, #ee5a52);
+            border-radius: 50%;
+            animation: orbit 20s linear infinite;
+        }
+
+        .planets::after {
+            content: '';
+            position: absolute;
+            top: 60%;
+            left: 150%;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #4ecdc4, #44a08d);
+            border-radius: 50%;
+            animation: orbit 15s linear infinite reverse;
+        }
+
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #00f2fe 0%, #4facfe 25%, #f093fb 50%, #f5576c 75%, #00f2fe 100%);
+            border-radius: 28px;
+            z-index: -1;
+            animation: cosmic-glow 4s linear infinite;
+        }
+
+        @keyframes cosmic-glow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            font-size: 2.8rem;
+            margin-bottom: 35px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1::before {
+            content: '🚀';
+            position: absolute;
+            top: -10px;
+            left: -50px;
+            font-size: 2rem;
+            animation: rocket-spin 3s ease-in-out infinite;
+        }
+
+        h1::after {
+            content: '⭐';
+            position: absolute;
+            top: -10px;
+            right: -50px;
+            font-size: 2rem;
+            animation: star-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes rocket-spin {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(15deg) scale(1.2); }
+        }
+
+        @keyframes star-pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.3) rotate(180deg); }
+        }
+
+        .story {
+            line-height: 1.9;
+            font-size: 1.15rem;
+            color: #2d3748;
+        }
+
+        .story p {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 18px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story p:nth-child(odd) {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-left: 6px solid #ffd700;
+        }
+
+        .story p:nth-child(even) {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-left: 6px solid #00f2fe;
+        }
+
+        .story p:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .story p::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .story p:hover::before {
+            left: 100%;
+        }
+
+        .dialogue {
+            font-style: italic;
+            font-weight: 600;
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .dialogue::before {
+            content: '💬';
+            position: absolute;
+            left: 5px;
+            top: 0px;
+            font-size: 1.5rem;
+        }
+
+        .cosmonaut-dialogue::before {
+            content: '👨‍🚀';
+        }
+
+        .star-dialogue::before {
+            content: '⭐';
+        }
+
+        .ending {
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffd700;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 35px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border: 2px solid #ffd700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ending::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(255, 215, 0, 0.1), transparent);
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .earth {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, #4facfe, #00f2fe, #0575e6);
+            border-radius: 50%;
+            animation: earth-rotate 10s linear infinite;
+            box-shadow: 0 0 20px rgba(79, 172, 254, 0.5);
+        }
+
+        .earth::after {
+            content: '🌍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+        }
+
+        @keyframes earth-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
+            color: #ffd700;
+            border: 2px solid #ffd700;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-family: 'Comfortaa', cursive;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #0c0c0c;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .story {
+                font-size: 1rem;
+            }
+
+            .rocket {
+                right: 5%;
+                width: 30px;
+                height: 45px;
+            }
+
+            .rocket::before {
+                font-size: 30px;
+            }
+
+            .back-button {
+                top: 10px;
+                left: 10px;
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="space-background">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+
+    <div class="rocket"></div>
+    <div class="planets"></div>
+    <div class="earth"></div>
+
+    <a href="index.html" class="back-button">🏠 На главную</a>
+    
+    <div class="container">
+        <h1>Сказка о космонавте и звездочке Светлане</h1>
+        
+        <div class="story">
+            <p>Далеко в космосе, на краю нашей галактики, жила маленькая звездочка по имени Светлана. Она была самой любопытной звездой во всей Вселенной и всегда мечтала подружиться с кем-нибудь с планеты Земля.</p>
+            
+            <p>А на Земле жил храбрый космонавт по имени Алексей. Он очень любил смотреть на звезды и часто думал: "Интересно, есть ли там, наверху, кто-то, кто тоже смотрит на нас?"</p>
+            
+            <p>Однажды ночью Светлана светила особенно ярко. Она так сильно хотела, чтобы кто-то с Земли заметил ее, что стала мигать разными цветами радуги!</p>
+            
+            <p>Алексей как раз готовился к новому космическому полету, когда увидел в телескоп удивительную мигающую звезду.</p>
+            
+            <p class="dialogue cosmonaut-dialogue">"Это невероятно!" - воскликнул он. "Эта звезда словно пытается со мной поговорить! Я должен полететь к ней!"</p>
+            
+            <p>И вот, через несколько дней, Алексей отправился в самое дальнее космическое путешествие в своей жизни. Его ракета неслась через темную бездну, мимо планет и комет, прямо к мигающей звездочке.</p>
+            
+            <p>Когда он приблизился, произошло чудо! Светлана смогла говорить с ним через космическую радиосвязь!</p>
+            
+            <p class="dialogue star-dialogue">"Привет, храбрый землянин!" - сказала Светлана. "Я так долго ждала, когда кто-то прилетит ко мне в гости!"</p>
+            
+            <p class="dialogue cosmonaut-dialogue">"Привет, удивительная звездочка!" - ответил Алексей. "Я космонавт Алексей, и я прилетел с планеты Земля. Ты так красиво светишь!"</p>
+            
+            <p>Светлана рассказала Алексею о жизни звезд, о том, как они путешествуют по космосу и освещают путь заблудившимся космическим кораблям. А Алексей рассказал ей о Земле, о детях, которые загадывают желания на звезды, о том, как люди мечтают о космосе.</p>
+            
+            <p class="dialogue star-dialogue">"Знаешь что?" - сказала Светлана. "Я подарю тебе немного своего звездного света! Отнеси его на Землю, и пусть все дети знают, что звезды - их друзья!"</p>
+            
+            <p>Светлана коснулась космического корабля своим лучом, и корабль заискрился волшебным светом. Теперь где бы ни пролетал Алексей, за ним тянулся прекрасный светящийся след.</p>
+            
+            <p>Когда Алексей вернулся на Землю, он рассказал всем детям о своей подруге-звездочке. И теперь, когда дети смотрят на небо, они знают, что где-то там их ждет Светлана - самая дружелюбная звезда во Вселенной.</p>
+            
+            <p>А Светлана каждую ночь светит особенно ярко, посылая привет своему другу Алексею и всем детям на Земле.</p>
+            
+            <div class="ending">
+                И с тех пор каждый, кто мечтает о космосе и дружбе со звездами, может увидеть волшебный след от корабля Алексея, пролетающий по ночному небу. Ведь настоящая дружба не знает границ - даже космических! 🚀⭐🌍
+            </div>
+        </div>
+    </div>
+</body>
+</html>

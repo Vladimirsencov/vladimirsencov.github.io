@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tale of Luna and the Dream Collector</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comfortaa', cursive;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 70%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .dream-bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+            animation: float-bubble 10s ease-in-out infinite;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .dream-bubble:nth-child(1) { 
+            top: 20%; left: 10%; width: 40px; height: 40px; 
+            animation-delay: 0s; 
+        }
+        .dream-bubble:nth-child(2) { 
+            top: 60%; left: 85%; width: 60px; height: 60px; 
+            animation-delay: 2s; 
+        }
+        .dream-bubble:nth-child(3) { 
+            top: 40%; left: 70%; width: 30px; height: 30px; 
+            animation-delay: 4s; 
+        }
+        .dream-bubble:nth-child(4) { 
+            top: 80%; left: 20%; width: 50px; height: 50px; 
+            animation-delay: 6s; 
+        }
+        .dream-bubble:nth-child(5) { 
+            top: 15%; left: 60%; width: 35px; height: 35px; 
+            animation-delay: 1s; 
+        }
+
+        @keyframes float-bubble {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
+            50% { transform: translateY(-50px) scale(1.2); opacity: 1; }
+        }
+
+        .moon-character {
+            position: absolute;
+            top: 20%;
+            right: 8%;
+            font-size: 70px;
+            animation: moon-dance 5s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+        }
+
+        @keyframes moon-dance {
+            0%, 100% { transform: rotate(-10deg) scale(1); }
+            25% { transform: rotate(5deg) scale(1.1); }
+            75% { transform: rotate(-5deg) scale(1.05); }
+        }
+
+        .sleepy-owl {
+            position: absolute;
+            bottom: 25%;
+            left: 5%;
+            font-size: 50px;
+            animation: owl-wink 4s ease-in-out infinite;
+        }
+
+        @keyframes owl-wink {
+            0%, 90%, 100% { opacity: 1; }
+            95% { opacity: 0.3; }
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(15px);
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #667eea 100%);
+            border-radius: 28px;
+            z-index: -1;
+            animation: magical-border 5s linear infinite;
+        }
+
+        @keyframes magical-border {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            font-size: 2.8rem;
+            margin-bottom: 35px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1::before {
+            content: '👧';
+            position: absolute;
+            top: -10px;
+            left: -80px;
+            font-size: 3rem;
+            animation: character-wave 3s ease-in-out infinite;
+        }
+
+        h1::after {
+            content: '🌙';
+            position: absolute;
+            top: -10px;
+            right: -80px;
+            font-size: 3rem;
+            animation: moon-glow 4s ease-in-out infinite;
+        }
+
+        @keyframes character-wave {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(10deg) scale(1.1); }
+        }
+
+        @keyframes moon-glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9)); }
+        }
+
+        .story {
+            line-height: 1.9;
+            font-size: 1.15rem;
+            color: #2d3748;
+        }
+
+        .story p {
+            margin-bottom: 25px;
+            padding: 22px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story p:nth-child(odd) {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-left: 6px solid #ff6b6b;
+        }
+
+        .story p:nth-child(even) {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-left: 6px solid #4ecdc4;
+        }
+
+        .story p:hover {
+            transform: translateX(8px) translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .story p::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: left 0.6s;
+        }
+
+        .story p:hover::before {
+            left: 100%;
+        }
+
+        .dialogue {
+            font-style: italic;
+            font-weight: 600;
+            position: relative;
+            padding-left: 40px;
+            color: #553c9a;
+        }
+
+        .luna-dialogue::before {
+            content: '👧';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.8rem;
+        }
+
+        .moon-dialogue::before {
+            content: '🌙';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.8rem;
+        }
+
+        .owl-dialogue::before {
+            content: '🦉';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.5rem;
+        }
+
+        .mom-dialogue::before {
+            content: '👩';
+            position: absolute;
+            left: 8px;
+            top: 0px;
+            font-size: 1.5rem;
+        }
+
+        .dream-jar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-family: 'Comfortaa', cursive;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .dream-jar::before {
+            content: '✨';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+        }
+
+        .ending {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 35px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .ending::before {
+            content: '💫';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+
+        .magic-jar {
+            position: absolute;
+            bottom: 15%;
+            right: 10%;
+            font-size: 60px;
+            animation: jar-magic 6s ease-in-out infinite;
+        }
+
+        @keyframes jar-magic {
+            0%, 100% { transform: scale(1) rotate(0deg); filter: hue-rotate(0deg); }
+            33% { transform: scale(1.1) rotate(5deg); filter: hue-rotate(120deg); }
+            66% { transform: scale(1.05) rotate(-5deg); filter: hue-rotate(240deg); }
+        }
+
+        .night-sky {
+            position: absolute;
+            top: 5%;
+            left: 8%;
+            font-size: 45px;
+            animation: night-twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes night-twinkle {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.15); }
+        }
+
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-family: 'Comfortaa', cursive;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+@media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .story {
+                font-size: 1rem;
+            }
+
+            h1::before,
+            h1::after {
+                display: none;
+            }
+
+            .moon-character,
+            .magic-jar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="dream-bubble"></div>
+        <div class="dream-bubble"></div>
+        <div class="dream-bubble"></div>
+        <div class="dream-bubble"></div>
+        <div class="dream-bubble"></div>
+    </div>
+
+    <div class="moon-character">🌙</div>
+    <div class="sleepy-owl">🦉</div>
+    <div class="magic-jar">🫙</div>
+    <div class="night-sky">🌌</div>
+
+        <a href="index.html" class="back-button">🏠 На главную</a>
+    
+<div class="container">
+        <h1>The Tale of Luna and the Dream Collector</h1>
+        
+        <div class="story">
+            <p>Once upon a time, there lived a little girl named Luna who absolutely refused to go to sleep. Every night, when her mother said "Time for bed!", Luna would come up with a hundred reasons why she couldn't possibly sleep yet.</p>
+            
+            <p class="dialogue luna-dialogue">"But Mom, I'm not tired at all! Can't I stay up just a little bit longer?" Luna would plead every single evening.</p>
+            
+            <p>One magical night, as Luna sat by her window avoiding bedtime, she noticed something extraordinary. The moon in the sky was glowing brighter than usual, and it seemed to be winking at her!</p>
+            
+            <p>Suddenly, the moon began to speak in the gentlest, most melodious voice:</p>
+            
+            <p class="dialogue moon-dialogue">"Hello, little Luna! I am the Moon, and I've been watching you. I know you don't want to sleep, but would you like to hear a secret about dreams?"</p>
+            
+            <p class="dialogue luna-dialogue">"The moon can talk?! This is amazing! Yes, please tell me the secret!" Luna exclaimed with wonder.</p>
+            
+            <p class="dialogue moon-dialogue">"Every night, I collect the most beautiful dreams from sleeping children all around the world. I keep them in my magical dream jar, and they become the stars that light up the night sky!"</p>
+            
+            <p>Luna's eyes widened with amazement. She had never imagined that stars were made from children's dreams!</p>
+            
+            <p class="dialogue moon-dialogue">"But here's the most wonderful part," continued the Moon. "Children who don't sleep miss out on creating their own beautiful dreams. Without dreams, the night sky would be dark and empty."</p>
+            
+            <p>Just then, a wise old owl perched on Luna's windowsill and joined the conversation:</p>
+            
+            <p class="dialogue owl-dialogue">"Hoot, hoot! The Moon speaks the truth, dear Luna. I've seen children's dreams floating up to the sky like sparkling bubbles. They're the most beautiful sight in the world!"</p>
+            
+            <div class="dream-jar">
+                "In your dreams," explained the Moon, "you can fly on the backs of dragons, swim with mermaids in crystal-clear oceans, dance with fairies in enchanted forests, and even visit magical kingdoms made entirely of candy!"
+            </div>
+            
+            <p class="dialogue luna-dialogue">"That sounds incredible! But what if I have a scary dream?" Luna asked, feeling a little worried.</p>
+            
+            <p class="dialogue moon-dialogue">"Ah, that's where I come in!" smiled the Moon. "Whenever a child has a frightening dream, I sprinkle it with moonbeams and transform it into something wonderful. Scary monsters become friendly dragons, dark forests become magical gardens!"</p>
+            
+            <p>The owl nodded wisely and added:</p>
+            
+            <p class="dialogue owl-dialogue">"And remember, Luna, while you sleep, your body grows stronger and your mind organizes all the wonderful things you learned during the day. Sleep is like a magical potion that makes you smarter and healthier!"</p>
+            
+            <p>Luna thought about all she had heard. The idea of contributing her dreams to the starry night sky filled her with excitement.</p>
+            
+            <p class="dialogue luna-dialogue">"Moon, if I go to sleep tonight, will you really collect my dreams and turn them into stars?"</p>
+            
+            <p class="dialogue moon-dialogue">"I promise, dear Luna. And tomorrow night, when you look up at the sky, you'll see your very own star twinkling back at you!"</p>
+            
+            <p>That night, Luna brushed her teeth without being asked and climbed into bed eagerly. As she closed her eyes, she could hardly contain her excitement about the magical adventure that awaited her.</p>
+            
+            <div class="dream-jar">
+                In her dream, Luna rode a magnificent unicorn across rainbow bridges, helped a lost baby dragon find its way home, and danced with the Moon himself in a ballroom made of clouds and stardust.
+            </div>
+            
+            <p>When Luna woke up the next morning, she felt more refreshed and happy than ever before. That evening, she ran to her window and gasped with joy - there, twinkling brighter than all the others, was a beautiful new star!</p>
+            
+            <p class="dialogue luna-dialogue">"Mom! Mom! Come look! The Moon kept his promise - that's MY star up there!"</p>
+            
+            <p class="dialogue mom-dialogue">"That's wonderful, sweetheart! I'm so proud of you for going to bed on time. You look so bright and happy today!"</p>
+            
+            <p>From that night forward, Luna couldn't wait for bedtime. She knew that every dream she had would become a new star, making the night sky more beautiful for everyone to enjoy.</p>
+            
+            <div class="ending">
+                And so Luna learned that sleep isn't just about rest - it's about contributing to the magic of the world. Every child who sleeps peacefully adds their own special star to the night sky, making it sparkle with wonder and dreams! 🌙✨🌟💫
+            </div>
+        </div>
+    </div>
+</body>
+</html>

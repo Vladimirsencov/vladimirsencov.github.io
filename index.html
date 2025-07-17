@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сказочный Мир - Коллекция Сказок</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comfortaa', cursive;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .magical-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .sparkle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 3s infinite alternate;
+        }
+
+        .sparkle:nth-child(1) { top: 15%; left: 10%; width: 4px; height: 4px; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 25%; left: 85%; width: 3px; height: 3px; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { top: 45%; left: 20%; width: 5px; height: 5px; animation-delay: 1s; }
+        .sparkle:nth-child(4) { top: 65%; left: 75%; width: 3px; height: 3px; animation-delay: 1.5s; }
+        .sparkle:nth-child(5) { top: 35%; left: 60%; width: 4px; height: 4px; animation-delay: 2s; }
+        .sparkle:nth-child(6) { top: 75%; left: 30%; width: 3px; height: 3px; animation-delay: 0.3s; }
+
+        @keyframes sparkle {
+            0% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+            100% { opacity: 1; transform: scale(1.3) rotate(180deg); }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 25%, #4facfe 50%, #00f2fe 75%, #f093fb 100%);
+            border-radius: 28px;
+            z-index: -1;
+            animation: rainbow 4s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1::before {
+            content: '📚';
+            position: absolute;
+            top: -15px;
+            left: -80px;
+            font-size: 3.5rem;
+            animation: book-float 3s ease-in-out infinite;
+        }
+
+        h1::after {
+            content: '✨';
+            position: absolute;
+            top: -15px;
+            right: -80px;
+            font-size: 3rem;
+            animation: sparkle-float 2s ease-in-out infinite;
+        }
+
+        @keyframes book-float {
+            0%, 100% { transform: translateY(0px) rotate(-5deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        @keyframes sparkle-float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-15px) scale(1.2); }
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+            font-style: italic;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .story-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 20px;
+            padding: 25px;
+            text-decoration: none;
+            color: #2d3748;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .story-card:nth-child(even) {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .story-card:nth-child(3n) {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+        }
+
+        .story-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: #667eea;
+        }
+
+        .story-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .story-card:hover::before {
+            left: 100%;
+        }
+
+        .story-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .story-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .story-icon {
+            display: block;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(102, 126, 234, 0.2);
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h1::before, h1::after {
+                display: none;
+            }
+            
+            .stories-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .story-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="magical-elements">
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+    </div>
+
+    <div class="container">
+        <h1>Сказочный Мир</h1>
+        <p class="subtitle">Добро пожаловать в волшебный мир сказок! Выберите историю для чтения:</p>
+        
+        <div class="stories-grid">
+            <a href="fairy_tale.html" class="story-card">
+                <div class="story-icon">⭐</div>
+                <div class="story-title">Сказка о Звездочке</div>
+                <div class="story-description">Волшебная история о маленькой звездочке, которая мечтала светить ярче всех на небе.</div>
+            </a>
+            
+            <a href="cat_fairy_tale.html" class="story-card">
+                <div class="story-icon">🐱</div>
+                <div class="story-title">Сказка о коте Мурзике</div>
+                <div class="story-description">Приключения пушистого кота Мурзика в волшебном лесу.</div>
+            </a>
+            
+            <a href="cosmonaut_fairy_tale.html" class="story-card">
+                <div class="story-icon">🚀</div>
+                <div class="story-title">Сказка о космонавте</div>
+                <div class="story-description">Невероятное путешествие маленького космонавта по звездным мирам.</div>
+            </a>
+            
+            <a href="dasha_computer_fairy_tale.html" class="story-card">
+                <div class="story-icon">💻</div>
+                <div class="story-title">Сказка о Даше и компьютере</div>
+                <div class="story-description">Увлекательная история о девочке Даше и ее друге-компьютере.</div>
+            </a>
+            
+            <a href="dasha_kolobok_fairy_tale.html" class="story-card">
+                <div class="story-icon">🥖</div>
+                <div class="story-title">Сказка о Даше и Колобке</div>
+                <div class="story-description">Новая версия классической сказки с участием девочки Даши.</div>
+            </a>
+            
+            <a href="dasha_magic_pillow_fairy_tale.html" class="story-card">
+                <div class="story-icon">🛏️</div>
+                <div class="story-title">Сказка о Даше и волшебной подушке</div>
+                <div class="story-description">Волшебные сны и приключения с особенной подушкой.</div>
+            </a>
+            
+            <a href="english_fairy_tale.html" class="story-card">
+                <div class="story-icon">🇬🇧</div>
+                <div class="story-title">Английская сказка</div>
+                <div class="story-description">Классическая английская сказка в современном пересказе.</div>
+            </a>
+            
+            <a href="little_lion_fairy_tale.html" class="story-card">
+                <div class="story-icon">🦁</div>
+                <div class="story-title">Сказка о маленьком льве</div>
+                <div class="story-description">История о храбром маленьком львенке и его друзьях.</div>
+            </a>
+            
+            <a href="princess_dasha_fairy_tale.html" class="story-card">
+                <div class="story-icon">👑</div>
+                <div class="story-title">Сказка о принцессе Даше</div>
+                <div class="story-description">Волшебная история о принцессе Даше и ее королевстве.</div>
+            </a>
+            
+            <a href="princess_dog_fairy_tale.html" class="story-card">
+                <div class="story-icon">🐕</div>
+                <div class="story-title">Сказка о принцессе-собаке</div>
+                <div class="story-description">Необычная сказка о собаке, которая стала принцессой.</div>
+            </a>
+            
+            <a href="magic_tree_fairy_tale.html" class="story-card">
+                <div class="story-icon">🌳</div>
+                <div class="story-title">Сказка о Волшебном Дереве Желаний</div>
+                <div class="story-description">Поучительная история о дереве, которое исполняет только добрые желания.</div>
+            </a>
+            
+            <a href="sleepy_cat_fairy_tale.html" class="story-card">
+                <div class="story-icon">😸</div>
+                <div class="story-title">Сказка о девочке и сонном котике</div>
+                <div class="story-description">История о девочке Лизе, которая не хотела спать, и её мудром котике Персике, показавшем ей волшебный мир снов.</div>
+            </a>
+            
+            <a href="dasha_enchanted_forest_fairy_tale.html" class="story-card">
+                <div class="story-icon">🌲</div>
+                <div class="story-title">Сказка о Даше и волшебном лесе</div>
+                <div class="story-description">Приключения девочки Даши в волшебном лесу, где она спасает магию природы с помощью доброты, смелости и дружбы.</div>
+            </a>
+            
+            <a href="little_tiger_fairy_tale.html" class="story-card">
+                <div class="story-icon">🐯</div>
+                <div class="story-title">Сказка о маленьком тигрёнке, который искал свои полоски</div>
+                <div class="story-description">Трогательная история о тигрёнке Рыжике, который понял, что настоящие полоски создаются добрыми делами.</div>
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>✨ Добро пожаловать в мир волшебства и чудес! ✨</p>
+        </div>
+    </div>
+</body>
+</html> 

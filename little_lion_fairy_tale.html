@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сказка о львёнке Лёве, который не хотел спать</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'comfortaa': ['Comfortaa', 'cursive'],
+                    },
+                    animation: {
+                        'grass-sway': 'grass-sway 4s ease-in-out infinite',
+                        'sparkle': 'sparkle 2s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'bounce-gentle': 'bounce-gentle 3s ease-in-out infinite',
+                        'sun-shine': 'sun-shine 5s ease-in-out infinite',
+                        'roar': 'roar 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'grass-sway': {
+                            '0%, 100%': { transform: 'rotate(-5deg) scale(1)' },
+                            '50%': { transform: 'rotate(5deg) scale(1.1)' },
+                        },
+                        'sparkle': {
+                            '0%, 100%': { opacity: '0.4', transform: 'scale(0.8)' },
+                            '50%': { opacity: '1', transform: 'scale(1.2)' },
+                        },
+                        'glow': {
+                            '0%': { textShadow: '0 0 5px rgba(255, 255, 255, 0.5)' },
+                            '100%': { textShadow: '0 0 20px rgba(255, 255, 255, 0.8)' },
+                        },
+                        'bounce-gentle': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'sun-shine': {
+                            '0%, 100%': { transform: 'scale(1) rotate(0deg)', opacity: '0.8' },
+                            '50%': { transform: 'scale(1.1) rotate(180deg)', opacity: '1' },
+                        },
+                        'roar': {
+                            '0%, 100%': { transform: 'scale(1) rotate(0deg)' },
+                            '50%': { transform: 'scale(1.2) rotate(5deg)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-comfortaa bg-gradient-to-br from-yellow-300 via-orange-400 via-red-400 via-orange-600 to-yellow-500 min-h-screen p-5 relative overflow-x-hidden">
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10">
+        <div class="absolute text-2xl animate-grass-sway opacity-70" style="bottom: 10%; left: 8%; animation-delay: 0s;">🌾</div>
+        <div class="absolute text-2xl animate-grass-sway opacity-70" style="bottom: 15%; left: 85%; animation-delay: 0.8s;">🌾</div>
+        <div class="absolute text-2xl animate-grass-sway opacity-70" style="bottom: 8%; left: 45%; animation-delay: 1.6s;">🌾</div>
+        <div class="absolute text-2xl animate-grass-sway opacity-70" style="bottom: 12%; left: 65%; animation-delay: 2.4s;">🌾</div>
+        <div class="absolute text-2xl animate-grass-sway opacity-70" style="bottom: 20%; left: 25%; animation-delay: 3.2s;">🌾</div>
+        <div class="absolute text-4xl animate-sun-shine opacity-90" style="top: 10%; right: 10%; animation-delay: 1s;">☀️</div>
+        <div class="absolute text-2xl animate-sparkle opacity-60" style="top: 30%; left: 20%; animation-delay: 0.5s;">✨</div>
+        <div class="absolute text-2xl animate-sparkle opacity-60" style="top: 70%; left: 80%; animation-delay: 2s;">✨</div>
+        <div class="absolute text-2xl animate-sparkle opacity-60" style="top: 50%; left: 90%; animation-delay: 3.5s;">✨</div>
+        <div class="absolute text-3xl animate-bounce-gentle opacity-70" style="top: 60%; left: 5%; animation-delay: 1.5s;">🌳</div>
+        <div class="absolute text-3xl animate-bounce-gentle opacity-70" style="top: 40%; left: 95%; animation-delay: 3s;">🌳</div>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 mb-8 border-4 border-gradient-to-r from-yellow-400 to-orange-400">
+            <h1 class="text-4xl md:text-5xl font-bold text-center mb-6 bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent animate-glow">
+                🦁 Сказка о львёнке Лёве, который не хотел спать 🦁
+            </h1>
+            
+            <div class="flex justify-center mb-8">
+                <div class="text-6xl animate-roar">🦁</div>
+            </div>
+            
+            <div class="space-y-6 text-lg md:text-xl leading-relaxed text-gray-800">
+                <p class="text-center italic text-orange-700 font-medium">
+                    В далёкой саванне жил маленький львёнок, который совсем не хотел спать...
+                </p>
+                
+                <p>
+                    Львёнок Лёва был самым энергичным детёнышем во всей саванне. Пока другие львята мирно спали под тенью акации, Лёва бегал, прыгал и играл с бабочками.
+                </p>
+                
+                <p>
+                    Каждый вечер, когда солнце садилось за горизонт, мама-львица звала всех детёнышей спать. Но Лёва всегда находил тысячу причин, чтобы не ложиться.
+                </p>
+                
+                <div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-6 rounded-2xl border-l-4 border-yellow-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🦁</div>
+                        <h3 class="text-xl font-bold text-yellow-800">Львёнок Лёва</h3>
+                    </div>
+                    <p class="italic text-yellow-800">
+                        "Мама, я совсем не устал! Давай ещё поиграем! Посмотри, как красиво светят звёзды!"
+                    </p>
+                </div>
+                
+                <p>
+                    Мама-львица была очень терпеливой, но она знала, что маленьким львятам нужен сон, чтобы расти большими и сильными.
+                </p>
+                
+                <div class="bg-gradient-to-r from-orange-100 to-red-100 p-6 rounded-2xl border-l-4 border-orange-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🦁</div>
+                        <h3 class="text-xl font-bold text-orange-800">Мама-львица</h3>
+                    </div>
+                    <p class="italic text-orange-800">
+                        "Лёва, дорогой, сон очень важен для тебя. Во сне ты растёшь и набираешься сил для новых приключений."
+                    </p>
+                </div>
+                
+                <p>
+                    Но Лёва только качал головой и продолжал играть. Однажды он так долго не спал, что стал очень усталым и капризным.
+                </p>
+                
+                <p>
+                    В тот день к их прайду пришла мудрая старая слониха по имени Мудрая Айя. Она сразу заметила, что маленький львёнок выглядит очень уставшим.
+                </p>
+                
+                <div class="bg-gradient-to-r from-gray-100 to-blue-100 p-6 rounded-2xl border-l-4 border-gray-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🐘</div>
+                        <h3 class="text-xl font-bold text-gray-800">Мудрая Айя</h3>
+                    </div>
+                    <p class="italic text-gray-800">
+                        "Маленький Лёва, ты знаешь, что происходит с животными, которые не спят? Они становятся слабыми и не могут защитить свою семью."
+                    </p>
+                </div>
+                
+                <p>
+                    Лёва заинтересовался. Он очень хотел быть сильным и храбрым львом!
+                </p>
+                
+                <div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-6 rounded-2xl border-l-4 border-yellow-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🦁</div>
+                        <h3 class="text-xl font-bold text-yellow-800">Львёнок Лёва</h3>
+                    </div>
+                    <p class="italic text-yellow-800">
+                        "Правда? А что ещё происходит, если не спать?"
+                    </p>
+                </div>
+                
+                <p>
+                    Мудрая Айя улыбнулась и рассказала Лёве удивительную историю:
+                </p>
+                
+                <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-2xl border-2 border-purple-400 my-8">
+                    <h3 class="text-xl font-bold text-purple-800 mb-3">🌙 История о волшебном сне</h3>
+                    <p class="italic text-purple-800">
+                        "Когда маленькие львята спят, они попадают в особенный мир, где встречаются с духами предков. Там они учатся быть храбрыми, мудрыми и сильными. Это как школа для будущих королей саванны!"
+                    </p>
+                </div>
+                
+                <p>
+                    Глаза Лёвы загорелись от интереса. Он никогда не слышал о такой школе!
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-4 my-8">
+                    <div class="bg-yellow-100 p-4 rounded-xl border-2 border-yellow-300 hover:bg-yellow-200 transition-colors">
+                        <div class="text-4xl mb-2 text-center">👑</div>
+                        <h4 class="font-bold text-yellow-800 text-center">Урок храбрости</h4>
+                        <p class="text-sm text-yellow-700 text-center">Как быть смелым в любой ситуации</p>
+                    </div>
+                    <div class="bg-orange-100 p-4 rounded-xl border-2 border-orange-300 hover:bg-orange-200 transition-colors">
+                        <div class="text-4xl mb-2 text-center">🧠</div>
+                        <h4 class="font-bold text-orange-800 text-center">Урок мудрости</h4>
+                        <p class="text-sm text-orange-700 text-center">Как принимать правильные решения</p>
+                    </div>
+                    <div class="bg-red-100 p-4 rounded-xl border-2 border-red-300 hover:bg-red-200 transition-colors">
+                        <div class="text-4xl mb-2 text-center">💪</div>
+                        <h4 class="font-bold text-red-800 text-center">Урок силы</h4>
+                        <p class="text-sm text-red-700 text-center">Как стать сильным и выносливым</p>
+                    </div>
+                    <div class="bg-green-100 p-4 rounded-xl border-2 border-green-300 hover:bg-green-200 transition-colors">
+                        <div class="text-4xl mb-2 text-center">❤️</div>
+                        <h4 class="font-bold text-green-800 text-center">Урок доброты</h4>
+                        <p class="text-sm text-green-700 text-center">Как заботиться о своей семье</p>
+                    </div>
+                </div>
+                
+                <p>
+                    Мудрая Айя продолжила:
+                </p>
+                
+                <div class="bg-gradient-to-r from-gray-100 to-blue-100 p-6 rounded-2xl border-l-4 border-gray-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🐘</div>
+                        <h3 class="text-xl font-bold text-gray-800">Мудрая Айя</h3>
+                    </div>
+                    <p class="italic text-gray-800">
+                        "Но попасть в эту школу могут только те львята, которые спят спокойно и глубоко. Те, кто не спит, пропускают все важные уроки."
+                    </p>
+                </div>
+                
+                <p>
+                    Лёва задумался. Он очень хотел стать настоящим королём саванны!
+                </p>
+                
+                <div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-6 rounded-2xl border-l-4 border-yellow-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🦁</div>
+                        <h3 class="text-xl font-bold text-yellow-800">Львёнок Лёва</h3>
+                    </div>
+                    <p class="italic text-yellow-800">
+                        "Мудрая Айя, а как мне попасть в эту школу? Я хочу учиться быть храбрым и сильным!"
+                    </p>
+                </div>
+                
+                <p>
+                    Слониха улыбнулась:
+                </p>
+                
+                <div class="bg-gradient-to-r from-gray-100 to-blue-100 p-6 rounded-2xl border-l-4 border-gray-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🐘</div>
+                        <h3 class="text-xl font-bold text-gray-800">Мудрая Айя</h3>
+                    </div>
+                    <p class="italic text-gray-800">
+                        "Очень просто! Нужно каждый вечер ложиться спать, когда мама зовёт. Закрыть глазки и представить, что ты идёшь по звёздной дорожке к школе будущих королей."
+                    </p>
+                </div>
+                
+                <p>
+                    В тот вечер Лёва впервые без капризов лёг спать. Он закрыл глаза и представил звёздную дорожку...
+                </p>
+                
+                <div class="bg-gradient-to-r from-indigo-100 to-purple-100 p-6 rounded-2xl border-2 border-indigo-400 my-8">
+                    <p class="text-center text-xl font-bold text-indigo-800 mb-4">
+                        🌟 Волшебный сон Лёвы 🌟
+                    </p>
+                    <p class="text-center text-indigo-700">
+                        И действительно! Во сне Лёва встретил мудрого льва-предка, который научил его быть храбрым, но справедливым, сильным, но добрым.
+                    </p>
+                </div>
+                
+                <p>
+                    Когда Лёва проснулся утром, он чувствовал себя совершенно по-другому. Он был бодрым, сильным и готовым к новым приключениям!
+                </p>
+                
+                <div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-6 rounded-2xl border-l-4 border-yellow-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🦁</div>
+                        <h3 class="text-xl font-bold text-yellow-800">Львёнок Лёва</h3>
+                    </div>
+                    <p class="italic text-yellow-800">
+                        "Мама! Я был в школе будущих королей! Там так интересно! Сегодня вечером я снова хочу туда попасть!"
+                    </p>
+                </div>
+                
+                <p>
+                    Мама-львица была очень рада и горда своим сыном:
+                </p>
+                
+                <div class="bg-gradient-to-r from-orange-100 to-red-100 p-6 rounded-2xl border-l-4 border-orange-500 my-6">
+                    <div class="flex items-center mb-3">
+                        <div class="text-3xl mr-3">🦁</div>
+                        <h3 class="text-xl font-bold text-orange-800">Мама-львица</h3>
+                    </div>
+                    <p class="italic text-orange-800">
+                        "Я так рада, Лёва! Теперь ты понимаешь, как важен сон. Каждую ночь ты будешь становиться мудрее и сильнее!"
+                    </p>
+                </div>
+                
+                <p>
+                    С тех пор Лёва никогда не капризничал перед сном. Он знал, что его ждёт удивительная школа, где он учится быть настоящим королём саванны.
+                </p>
+                
+                <p>
+                    А когда Лёва вырос, он стал самым мудрым и справедливым львом во всей саванне, и все звери уважали его за доброту и храбрость.
+                </p>
+                
+                <div class="text-center mt-8 p-6 bg-gradient-to-r from-yellow-100 to-orange-100 rounded-2xl border-2 border-yellow-300">
+                    <p class="text-xl font-bold text-orange-800 mb-2">✨ Конец сказки ✨</p>
+                    <p class="text-lg text-orange-700">
+                        И помните: каждый ребёнок, который спит спокойно, попадает в свою особенную школу снов, где учится быть лучше!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="index.html" class="inline-block bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                🏠 Вернуться к сказкам
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Interactive roar effect on click
+        document.addEventListener('click', function(e) {
+            const roar = document.createElement('div');
+            roar.innerHTML = '🦁';
+            roar.className = 'fixed text-2xl pointer-events-none animate-roar';
+            roar.style.left = e.clientX + 'px';
+            roar.style.top = e.clientY + 'px';
+            roar.style.zIndex = '9999';
+            document.body.appendChild(roar);
+            
+            setTimeout(() => {
+                roar.remove();
+            }, 3000);
+        });
+
+        // Lesson cards hover effect
+        document.querySelectorAll('.grid > div').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
